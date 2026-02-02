@@ -68,8 +68,6 @@ DOT      : '.';
 // SEPARATOR
 LPAREN   : '(';
 RPAREN   : ')';
-LBRACK   : '[';
-RBRACK   : ']';
 LBRACE   : '{';
 RBRACE   : '}';
 COMMA    : ',';
@@ -77,7 +75,7 @@ SEMI     : ';';
 COLON    : ':';
 
 //IDENTIFIERS
-ID: [A-Za-z_] [A-Za-z0-9_]*;
+ID: [A-Za-z_][A-Za-z0-9_]*;
 GLOBAL_ID: '@' ID;
 
 // LITERAL
@@ -112,49 +110,91 @@ UNCLOSE_STRING: '"' STR_CHAR* ('\r\n' | '\n' | EOF) {
         raise UncloseString(self.text[1:])
 };
 
-// TODO EXPRESSION AND LITERAL
-list_expression: expression COMMA list_expression | expression;
-expression: expression1 (GT | LT | EQ) expression1 | expression1;
-expression1: expression2 POW expression1 | expression2;
-expression2: expression2 (PLUS | SUB) expression3 | expression3;
-expression3: expression3 MUL expression4 | expression4;
-expression4: SUB expression4 | expression5;
-expression5: LBRACK expression RBRACK expression5 | expression6;
-expression6: ID | GLOBAL_ID | literal | function_call | LPAREN expression RPAREN;
-function_call: CALL ID (ARROW list_expression)?;
- 
-list_literal: literal COMMA list_literal | literal;
-literal: INT_LIT | FLOAT_LIT | STRING_LIT | array_lit;
-array_lit: LT list_literal GT;
+// EXPRESSIONS - Following operator precedence from specification
+expression: assignment;
 
-// TODO DECLARED
-program: variable* function* EOF;
-variable: all_type GLOBAL_ID EQ literal SEMI;
-function: FUNC all_type? ID LPAREN list_param? RPAREN COLON list_statement ENDFUNC;
+assignment: logical_or (ASSIGN assignment)?;
 
-list_param: param COMMA list_param | param;
-param: ID COLON all_type;
-all_type: NUMBER | BOOL | STRING;
+logical_or: logical_and (OR logical_and)*;
 
+logical_and: equality (AND equality)*;
 
-// TODO STATEMENT
-list_statement: statement list_statement | statement;
-statement: declared_statement SEMI
-		| assign_statement SEMI
-		| if_statement
-		| for_statement
-		| continue_statement SEMI
-		| call_statement SEMI
-		| return_statement SEMI
-        | block_statement;
-declared_statement: all_type ID ARROW expression;
-assign_statement: lhs ARROW expression;
-lhs: LBRACK expression RBRACK lhs | ID;
+equality: relational ((EQ | NE) relational)*;
 
-if_statement: IF expression block_statement (ELSE block_statement)?;
-for_statement: FOR LPAREN (declared_statement | ID ARROW expression) SEMI (GT | LT | EQ) expression SEMI HASH expression RPAREN block_statement;
-continue_statement: CONTINUE;
-call_statement: function_call;
-return_statement: RETURN expression?;
-block_statement: LBRACE list_statement? RBRACE;
+relational: additive ((LT | LE | GT | GE) additive)*;
+
+additive: multiplicative ((PLUS | SUB) multiplicative)*;
+
+multiplicative: unary ((MUL | DIV | MOD) unary)*;
+
+unary: (NOT | SUB | PLUS | INC | DEC) unary | postfix;
+
+postfix: primary ((INC | DEC))?;
+
+primary: ID (DOT ID)* | literal | function_call | LPAREN expression RPAREN;
+
+function_call: ID LPAREN argument_list? RPAREN;
+
+argument_list: expression (COMMA expression)*;
+
+// LITERALS
+literal: INT_LIT | FLOAT_LIT | STRING_LIT | struct_init;
+
+struct_init: LBRACE argument_list? RBRACE;
+
+// PROGRAM STRUCTURE
+program: struct_decl* function* EOF;
+
+struct_decl: STRUCT ID LBRACE struct_member* RBRACE SEMI;
+
+struct_member: type_name ID SEMI;
+
+function: type_name? ID LPAREN param_list? RPAREN LBRACE statement* RBRACE;
+
+param_list: param (COMMA param)*;
+
+param: ID COLON type_name;
+
+type_name: INT | FLOAT | STRING | VOID | AUTO | ID;
+
+// LVALUE - for assignment targets
+lvalue: ID (DOT ID)*;
+
+// STATEMENTS
+statement: var_decl SEMI
+         | assign_stmt SEMI
+         | if_stmt
+         | while_stmt
+         | for_stmt
+         | switch_stmt
+         | break_stmt SEMI
+         | continue_stmt SEMI
+         | return_stmt SEMI
+         | expr_stmt SEMI
+         | block_stmt;
+
+var_decl: type_name ID (ASSIGN expression)?;
+
+assign_stmt: lvalue ASSIGN expression;
+
+if_stmt: IF LPAREN expression RPAREN statement (ELSE statement)?;
+
+while_stmt: WHILE LPAREN expression RPAREN statement;
+
+for_stmt: FOR LPAREN var_decl? SEMI expression? SEMI assign_stmt? RPAREN statement;
+
+switch_stmt: SWITCH LPAREN expression RPAREN LBRACE switch_case* RBRACE;
+
+switch_case: CASE INT_LIT COLON statement*
+           | DEFAULT COLON statement*;
+
+break_stmt: BREAK;
+
+continue_stmt: CONTINUE;
+
+return_stmt: RETURN expression?;
+
+expr_stmt: expression;
+
+block_stmt: LBRACE statement* RBRACE;
 

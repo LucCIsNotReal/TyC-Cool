@@ -1,46 +1,82 @@
-"""Lexer test cases for TyC compiler"""
+"""
+Lexer test cases for TyC compiler
+TODO: Implement 100 test cases for lexer
+"""
 
 import pytest
-
-from src.grammar.lexererr import ErrorToken, IllegalEscape, UncloseString
 from tests.utils import Tokenizer
 
 
-def test_lexer_simple_declaration():
-    source = "number @x = 10;"
-    tokenizer = Tokenizer(source)
-    expected = "NUMBER,number,GLOBAL_ID,@x,EQ,=,INT_LIT,10,SEMI,;,EOF"
-    assert tokenizer.get_tokens_as_string() == expected
+def test_001():
+    source = """\t\r\n
+    /* This is a block comment so // has no meaning here */
+    // VOTIEN
+"""
+    expected = "EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
 
+def test_002():
+    source = "@"
+    try:
+        Tokenizer(source).get_tokens_as_string()
+        assert False, "Expected ErrorToken but no exception was raised"
+    except Exception as e:
+        assert str(e) == "Error Token @"
 
-def test_lexer_float_and_string():
-    source = 'number @y = 1.23e-4; string @s = "hi\\n";'
-    tokenizer = Tokenizer(source)
-    expected = (
-        "NUMBER,number,GLOBAL_ID,@y,EQ,=,FLOAT_LIT,1.23e-4,SEMI,;,"
-        "STRING,string,GLOBAL_ID,@s,EQ,=,STRING_LIT,hi\\n,SEMI,;,EOF"
-    )
-    assert tokenizer.get_tokens_as_string() == expected
+def test_003():
+    source = "auto auto1"
+    expected = "auto,auto1,EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
 
+def test_004():
+    source = "+ ++"
+    expected = "+,++,EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
 
-def test_lexer_comments_are_skipped():
-    source = "// line comment\nnumber @x = 1; /* block */"
-    tokenizer = Tokenizer(source)
-    expected = "NUMBER,number,GLOBAL_ID,@x,EQ,=,INT_LIT,1,SEMI,;,EOF"
-    assert tokenizer.get_tokens_as_string() == expected
+def test_005():
+    source = "baobao123"
+    expected = "baobao123,EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
 
+def test_006():
+    source = "0   100   255   2500   -45"
+    expected = "0,100,255,2500,-45,EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
 
-def test_lexer_error_token():
-    source = "@@"
-    tokenizer = Tokenizer(source)
-    with pytest.raises(ErrorToken) as excinfo:
-        tokenizer.get_tokens_as_string()
-    assert str(excinfo.value) == "Error Token @"
+def test_007():
+    source = "0.0   3.14   -2.5   1.23e4   5.67E-2   1.   .5"
+    expected = "0.0,3.14,-2.5,1.23e4,5.67E-2,1.,.5,EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
 
+def test_008():
+    source = """
+    "This is a string containing tab \\t"
+    "He asked me: \\"Where is John?\\""
+"""
+    expected = "This is a string containing tab \\t,He asked me: \\\"Where is John?\\\",EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
 
-def test_lexer_unclosed_string():
-    source = '"abc'
-    tokenizer = Tokenizer(source)
-    with pytest.raises(UncloseString) as excinfo:
-        tokenizer.get_tokens_as_string()
-    assert str(excinfo.value) == "Unclosed String: abc"
+def test_009():
+    source = """
+    "This is a string \n containing tab \\t"
+"""
+    try:
+        Tokenizer(source).get_tokens_as_string()
+        assert False, "Expected ErrorToken but no exception was raised"
+    except Exception as e:
+        assert str(e) == "Unclosed String: This is a string \n"
+    
+def test_010():
+    source = """
+    "This is a string \\z containing tab \\t"
+"""
+    try:
+        Tokenizer(source).get_tokens_as_string()
+        assert False, "Expected ErrorToken but no exception was raised"
+    except Exception as e:
+        assert str(e) == "Illegal Escape In String: This is a string \\z"
+
+def test_011():
+    source = "auto x = 5 + 3 * 2;"
+    expected = "auto,x,=,5,+,3,*,2,;,EOF"
+    assert Tokenizer(source).get_tokens_as_string() == expected
