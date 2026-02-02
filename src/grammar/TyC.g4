@@ -28,31 +28,42 @@ options{
 
 //Lexical rules
 // KEYWORDS
+AUTO     : 'auto';
+BREAK    : 'break';
+CASE     : 'case';
 CONTINUE : 'continue';
-IF       : 'if';
+DEFAULT  : 'default';
 ELSE     : 'else';
+FLOAT    : 'float';
 FOR      : 'for';
-BOOL     : 'bool';
-NUMBER   : 'number';
-STRING   : 'string';
-TRUE     : 'T';
-FALSE    : 'F';
-FUNC     : 'func';
-ENDFUNC  : 'endfunc';
-CALL     : 'call';
+IF       : 'if';
+INT      : 'int';
 RETURN   : 'return';
-
+STRING   : 'string';
+STRUCT   : 'struct';
+SWITCH   : 'switch';
+VOID     : 'void';
+WHILE    : 'while';
 
 // OPERATORS
 PLUS     : '+';
 SUB      : '-';
 MUL      : '*';
-EQ       : '=';
+DIV      : '/';
+MOD      : '%';
+ASSIGN   : '=';
+EQ       : '==';
+NE       : '!=';
 GT       : '>';
 LT       : '<';
-POW      : '**';
-HASH     : '#';
-ARROW    : '<-';
+GE       : '>=';
+LE       : '<=';
+AND      : '&&';
+OR       : '||';
+NOT      : '!';
+INC      : '++';
+DEC      : '--';
+DOT      : '.';
 
 // SEPARATOR
 LPAREN   : '(';
@@ -71,7 +82,7 @@ GLOBAL_ID: '@' ID;
 
 // LITERAL
 INT_LIT: [1-9] [0-9]* | '0';
-FLOAT_LIT: [0-9]+ ('.' [0-9]* [Ee] [+-]? ([0-9]+) |  '.' [0-9]* | [Ee] [+-]? ([0-9]+));
+FLOAT_LIT: ([0-9]+ '.' [0-9]* | '.' [0-9]+) ([Ee] [+-]? [0-9]+)? | [0-9]+ [Ee] [+-]? [0-9]+;
 STRING_LIT: '"' STR_CHAR* '"' {self.text = self.text[1:-1] };
 fragment STR_CHAR: ~[\n\\"] | ESC_SEQ;
 fragment ESC_SEQ: '\\' [bfrnt\\"];
@@ -90,15 +101,15 @@ WS: [ \t\r\n]+ -> skip;
 // ERROR
 ERROR_CHAR: .;
 ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL {
-    raise illegalEscape(self.text[1:])
+    raise IllegalEscape(self.text[1:])
 };
 UNCLOSE_STRING: '"' STR_CHAR* ('\r\n' | '\n' | EOF) {
     if(len(self.text) >= 2 and self.text[-1] == '\n' and self.text[-2] == '\r'):
-        raise uncloseString(self.text[1:-2])
+        raise UncloseString(self.text[1:-2])
     elif (self.text[-1] == '\n'):
-        raise uncloseString(self.text[1:-1])
+        raise UncloseString(self.text[1:-1])
     else:
-        raise uncloseString(self.text[1:])
+        raise UncloseString(self.text[1:])
 };
 
 // TODO EXPRESSION AND LITERAL
@@ -113,7 +124,7 @@ expression6: ID | GLOBAL_ID | literal | function_call | LPAREN expression RPAREN
 function_call: CALL ID (ARROW list_expression)?;
  
 list_literal: literal COMMA list_literal | literal;
-literal: TRUE | FALSE | INT_LIT | FLOAT_LIT | STRING_LIT | array_lit;
+literal: INT_LIT | FLOAT_LIT | STRING_LIT | array_lit;
 array_lit: LT list_literal GT;
 
 // TODO DECLARED
@@ -146,5 +157,4 @@ continue_statement: CONTINUE;
 call_statement: function_call;
 return_statement: RETURN expression?;
 block_statement: LBRACE list_statement? RBRACE;
-
 

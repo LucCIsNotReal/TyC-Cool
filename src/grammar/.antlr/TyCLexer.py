@@ -262,7 +262,7 @@ class TyCLexer(Lexer):
     def ILLEGAL_ESCAPE_action(self, localctx:RuleContext , actionIndex:int):
         if actionIndex == 1:
 
-                raise illegalEscape(self.text[1:])
+                raise IllegalEscape(self.text[1:])
 
      
 
@@ -270,11 +270,11 @@ class TyCLexer(Lexer):
         if actionIndex == 2:
 
                 if(len(self.text) >= 2 and self.text[-1] == '\n' and self.text[-2] == '\r'):
-                    raise uncloseString(self.text[1:-2])
+                    raise UncloseString(self.text[1:-2])
                 elif (self.text[-1] == '\n'):
-                    raise uncloseString(self.text[1:-1])
+                    raise UncloseString(self.text[1:-1])
                 else:
-                    raise uncloseString(self.text[1:])
+                    raise UncloseString(self.text[1:])
 
      
 
