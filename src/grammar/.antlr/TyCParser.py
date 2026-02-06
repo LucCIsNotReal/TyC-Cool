@@ -1,4 +1,4 @@
-# Generated from d:/PPL/TyC-Cool/src/grammar/TyC.g4 by ANTLR 4.13.1
+# Generated from d:/PPL/tyc-compiler/src/grammar/TyC.g4 by ANTLR 4.13.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -10,101 +10,140 @@ else:
 
 def serializedATN():
     return [
-        4,1,42,278,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,54,377,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
-        2,27,7,27,2,28,7,28,1,0,1,0,1,0,1,0,1,0,3,0,64,8,0,1,1,1,1,1,1,1,
-        1,1,1,3,1,71,8,1,1,2,1,2,1,2,1,2,1,2,3,2,78,8,2,1,3,1,3,1,3,1,3,
-        1,3,1,3,5,3,86,8,3,10,3,12,3,89,9,3,1,4,1,4,1,4,1,4,1,4,1,4,5,4,
-        97,8,4,10,4,12,4,100,9,4,1,5,1,5,1,5,3,5,105,8,5,1,6,1,6,1,6,1,6,
-        1,6,1,6,3,6,113,8,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,123,8,7,
-        1,8,1,8,1,8,1,8,3,8,129,8,8,1,9,1,9,1,9,1,9,1,9,3,9,136,8,9,1,10,
-        1,10,1,10,1,10,1,10,1,10,3,10,144,8,10,1,11,1,11,1,11,1,11,1,12,
-        5,12,151,8,12,10,12,12,12,154,9,12,1,12,5,12,157,8,12,10,12,12,12,
-        160,9,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,13,1,14,1,14,3,14,
-        172,8,14,1,14,1,14,1,14,3,14,177,8,14,1,14,1,14,1,14,1,14,1,14,1,
-        15,1,15,1,15,1,15,1,15,3,15,189,8,15,1,16,1,16,1,16,1,16,1,17,1,
-        17,1,18,1,18,1,18,1,18,3,18,201,8,18,1,19,1,19,1,19,1,19,1,19,1,
-        19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,1,19,3,
-        19,221,8,19,1,20,1,20,1,20,1,20,1,20,1,21,1,21,1,21,1,21,1,22,1,
-        22,1,22,1,22,1,22,1,22,3,22,238,8,22,1,23,1,23,1,23,1,23,1,23,3,
-        23,245,8,23,1,24,1,24,1,24,1,24,1,24,1,24,3,24,253,8,24,1,24,1,24,
-        1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,25,1,25,1,26,1,26,1,27,1,27,
-        3,27,270,8,27,1,28,1,28,3,28,274,8,28,1,28,1,28,1,28,0,2,6,8,29,
-        0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,
-        46,48,50,52,54,56,0,3,1,0,17,19,1,0,14,15,1,0,5,7,284,0,63,1,0,0,
-        0,2,70,1,0,0,0,4,77,1,0,0,0,6,79,1,0,0,0,8,90,1,0,0,0,10,104,1,0,
-        0,0,12,112,1,0,0,0,14,122,1,0,0,0,16,124,1,0,0,0,18,135,1,0,0,0,
-        20,143,1,0,0,0,22,145,1,0,0,0,24,152,1,0,0,0,26,163,1,0,0,0,28,169,
-        1,0,0,0,30,188,1,0,0,0,32,190,1,0,0,0,34,194,1,0,0,0,36,200,1,0,
-        0,0,38,220,1,0,0,0,40,222,1,0,0,0,42,227,1,0,0,0,44,237,1,0,0,0,
-        46,239,1,0,0,0,48,246,1,0,0,0,50,263,1,0,0,0,52,265,1,0,0,0,54,267,
-        1,0,0,0,56,271,1,0,0,0,58,59,3,2,1,0,59,60,5,29,0,0,60,61,3,0,0,
-        0,61,64,1,0,0,0,62,64,3,2,1,0,63,58,1,0,0,0,63,62,1,0,0,0,64,1,1,
-        0,0,0,65,66,3,4,2,0,66,67,7,0,0,0,67,68,3,4,2,0,68,71,1,0,0,0,69,
-        71,3,4,2,0,70,65,1,0,0,0,70,69,1,0,0,0,71,3,1,0,0,0,72,73,3,6,3,
-        0,73,74,5,20,0,0,74,75,3,4,2,0,75,78,1,0,0,0,76,78,3,6,3,0,77,72,
-        1,0,0,0,77,76,1,0,0,0,78,5,1,0,0,0,79,80,6,3,-1,0,80,81,3,8,4,0,
-        81,87,1,0,0,0,82,83,10,2,0,0,83,84,7,1,0,0,84,86,3,8,4,0,85,82,1,
-        0,0,0,86,89,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,7,1,0,0,0,89,
-        87,1,0,0,0,90,91,6,4,-1,0,91,92,3,10,5,0,92,98,1,0,0,0,93,94,10,
-        2,0,0,94,95,5,16,0,0,95,97,3,10,5,0,96,93,1,0,0,0,97,100,1,0,0,0,
-        98,96,1,0,0,0,98,99,1,0,0,0,99,9,1,0,0,0,100,98,1,0,0,0,101,102,
-        5,15,0,0,102,105,3,10,5,0,103,105,3,12,6,0,104,101,1,0,0,0,104,103,
-        1,0,0,0,105,11,1,0,0,0,106,107,5,25,0,0,107,108,3,2,1,0,108,109,
-        5,26,0,0,109,110,3,12,6,0,110,113,1,0,0,0,111,113,3,14,7,0,112,106,
-        1,0,0,0,112,111,1,0,0,0,113,13,1,0,0,0,114,123,5,32,0,0,115,123,
-        5,33,0,0,116,123,3,20,10,0,117,123,3,16,8,0,118,119,5,23,0,0,119,
-        120,3,2,1,0,120,121,5,24,0,0,121,123,1,0,0,0,122,114,1,0,0,0,122,
-        115,1,0,0,0,122,116,1,0,0,0,122,117,1,0,0,0,122,118,1,0,0,0,123,
-        15,1,0,0,0,124,125,5,12,0,0,125,128,5,32,0,0,126,127,5,22,0,0,127,
-        129,3,0,0,0,128,126,1,0,0,0,128,129,1,0,0,0,129,17,1,0,0,0,130,131,
-        3,20,10,0,131,132,5,29,0,0,132,133,3,18,9,0,133,136,1,0,0,0,134,
-        136,3,20,10,0,135,130,1,0,0,0,135,134,1,0,0,0,136,19,1,0,0,0,137,
-        144,5,8,0,0,138,144,5,9,0,0,139,144,5,34,0,0,140,144,5,35,0,0,141,
-        144,5,36,0,0,142,144,3,22,11,0,143,137,1,0,0,0,143,138,1,0,0,0,143,
-        139,1,0,0,0,143,140,1,0,0,0,143,141,1,0,0,0,143,142,1,0,0,0,144,
-        21,1,0,0,0,145,146,5,19,0,0,146,147,3,18,9,0,147,148,5,18,0,0,148,
-        23,1,0,0,0,149,151,3,26,13,0,150,149,1,0,0,0,151,154,1,0,0,0,152,
-        150,1,0,0,0,152,153,1,0,0,0,153,158,1,0,0,0,154,152,1,0,0,0,155,
-        157,3,28,14,0,156,155,1,0,0,0,157,160,1,0,0,0,158,156,1,0,0,0,158,
-        159,1,0,0,0,159,161,1,0,0,0,160,158,1,0,0,0,161,162,5,0,0,1,162,
-        25,1,0,0,0,163,164,3,34,17,0,164,165,5,33,0,0,165,166,5,17,0,0,166,
-        167,3,20,10,0,167,168,5,30,0,0,168,27,1,0,0,0,169,171,5,10,0,0,170,
-        172,3,34,17,0,171,170,1,0,0,0,171,172,1,0,0,0,172,173,1,0,0,0,173,
-        174,5,32,0,0,174,176,5,23,0,0,175,177,3,30,15,0,176,175,1,0,0,0,
-        176,177,1,0,0,0,177,178,1,0,0,0,178,179,5,24,0,0,179,180,5,31,0,
-        0,180,181,3,36,18,0,181,182,5,11,0,0,182,29,1,0,0,0,183,184,3,32,
-        16,0,184,185,5,29,0,0,185,186,3,30,15,0,186,189,1,0,0,0,187,189,
-        3,32,16,0,188,183,1,0,0,0,188,187,1,0,0,0,189,31,1,0,0,0,190,191,
-        5,32,0,0,191,192,5,31,0,0,192,193,3,34,17,0,193,33,1,0,0,0,194,195,
-        7,2,0,0,195,35,1,0,0,0,196,197,3,38,19,0,197,198,3,36,18,0,198,201,
-        1,0,0,0,199,201,3,38,19,0,200,196,1,0,0,0,200,199,1,0,0,0,201,37,
-        1,0,0,0,202,203,3,40,20,0,203,204,5,30,0,0,204,221,1,0,0,0,205,206,
-        3,42,21,0,206,207,5,30,0,0,207,221,1,0,0,0,208,221,3,46,23,0,209,
-        221,3,48,24,0,210,211,3,50,25,0,211,212,5,30,0,0,212,221,1,0,0,0,
-        213,214,3,52,26,0,214,215,5,30,0,0,215,221,1,0,0,0,216,217,3,54,
-        27,0,217,218,5,30,0,0,218,221,1,0,0,0,219,221,3,56,28,0,220,202,
-        1,0,0,0,220,205,1,0,0,0,220,208,1,0,0,0,220,209,1,0,0,0,220,210,
-        1,0,0,0,220,213,1,0,0,0,220,216,1,0,0,0,220,219,1,0,0,0,221,39,1,
-        0,0,0,222,223,3,34,17,0,223,224,5,32,0,0,224,225,5,22,0,0,225,226,
-        3,2,1,0,226,41,1,0,0,0,227,228,3,44,22,0,228,229,5,22,0,0,229,230,
-        3,2,1,0,230,43,1,0,0,0,231,232,5,25,0,0,232,233,3,2,1,0,233,234,
-        5,26,0,0,234,235,3,44,22,0,235,238,1,0,0,0,236,238,5,32,0,0,237,
-        231,1,0,0,0,237,236,1,0,0,0,238,45,1,0,0,0,239,240,5,2,0,0,240,241,
-        3,2,1,0,241,244,3,56,28,0,242,243,5,3,0,0,243,245,3,56,28,0,244,
-        242,1,0,0,0,244,245,1,0,0,0,245,47,1,0,0,0,246,247,5,4,0,0,247,252,
-        5,23,0,0,248,253,3,40,20,0,249,250,5,32,0,0,250,251,5,22,0,0,251,
-        253,3,2,1,0,252,248,1,0,0,0,252,249,1,0,0,0,253,254,1,0,0,0,254,
-        255,5,30,0,0,255,256,7,0,0,0,256,257,3,2,1,0,257,258,5,30,0,0,258,
-        259,5,21,0,0,259,260,3,2,1,0,260,261,5,24,0,0,261,262,3,56,28,0,
-        262,49,1,0,0,0,263,264,5,1,0,0,264,51,1,0,0,0,265,266,3,16,8,0,266,
-        53,1,0,0,0,267,269,5,13,0,0,268,270,3,2,1,0,269,268,1,0,0,0,269,
-        270,1,0,0,0,270,55,1,0,0,0,271,273,5,27,0,0,272,274,3,36,18,0,273,
-        272,1,0,0,0,273,274,1,0,0,0,274,275,1,0,0,0,275,276,5,28,0,0,276,
-        57,1,0,0,0,23,63,70,77,87,98,104,112,122,128,135,143,152,158,171,
-        176,188,200,220,237,244,252,269,273
+        2,27,7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,
+        7,33,2,34,7,34,2,35,7,35,2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,
+        2,40,7,40,1,0,5,0,84,8,0,10,0,12,0,87,9,0,1,0,1,0,1,1,1,1,3,1,93,
+        8,1,1,2,1,2,1,2,1,2,5,2,99,8,2,10,2,12,2,102,9,2,1,2,1,2,1,2,1,3,
+        1,3,1,3,1,3,1,4,3,4,112,8,4,1,4,1,4,1,4,3,4,117,8,4,1,4,1,4,1,4,
+        1,5,1,5,3,5,124,8,5,1,6,1,6,1,6,5,6,129,8,6,10,6,12,6,132,9,6,1,
+        7,1,7,1,7,1,8,1,8,1,9,1,9,5,9,141,8,9,10,9,12,9,144,9,9,1,9,1,9,
+        1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,
+        1,10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,168,8,10,1,11,1,11,1,11,
+        1,11,3,11,174,8,11,1,11,1,11,1,11,1,11,3,11,180,8,11,3,11,182,8,
+        11,1,12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,191,8,12,1,13,1,13,1,
+        13,1,13,1,13,1,13,1,14,1,14,1,14,3,14,202,8,14,1,14,1,14,3,14,206,
+        8,14,1,14,1,14,3,14,210,8,14,1,14,1,14,1,14,1,15,1,15,3,15,217,8,
+        15,1,16,1,16,1,17,1,17,1,17,1,17,1,17,1,17,5,17,227,8,17,10,17,12,
+        17,230,9,17,1,17,1,17,1,18,1,18,3,18,236,8,18,1,19,1,19,1,19,1,19,
+        5,19,242,8,19,10,19,12,19,245,9,19,1,20,1,20,1,20,5,20,250,8,20,
+        10,20,12,20,253,9,20,1,21,1,21,1,22,1,22,1,23,1,23,3,23,261,8,23,
+        1,24,1,24,1,25,1,25,1,26,1,26,1,26,3,26,270,8,26,1,27,1,27,1,27,
+        5,27,275,8,27,10,27,12,27,278,9,27,1,28,1,28,1,28,5,28,283,8,28,
+        10,28,12,28,286,9,28,1,29,1,29,1,29,5,29,291,8,29,10,29,12,29,294,
+        9,29,1,30,1,30,1,30,5,30,299,8,30,10,30,12,30,302,9,30,1,31,1,31,
+        1,31,5,31,307,8,31,10,31,12,31,310,9,31,1,32,1,32,1,32,5,32,315,
+        8,32,10,32,12,32,318,9,32,1,33,1,33,1,33,3,33,323,8,33,1,34,1,34,
+        5,34,327,8,34,10,34,12,34,330,9,34,1,35,1,35,3,35,334,8,35,1,35,
+        1,35,1,35,1,35,1,35,3,35,341,8,35,1,36,1,36,1,36,5,36,346,8,36,10,
+        36,12,36,349,9,36,1,37,1,37,1,37,1,37,1,37,1,37,1,37,1,37,3,37,359,
+        8,37,1,38,1,38,1,39,1,39,3,39,365,8,39,1,39,1,39,1,40,1,40,1,40,
+        5,40,372,8,40,10,40,12,40,375,9,40,1,40,0,0,41,0,2,4,6,8,10,12,14,
+        16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,
+        60,62,64,66,68,70,72,74,76,78,80,0,7,4,0,7,7,10,10,12,12,44,45,1,
+        0,21,22,2,0,19,20,26,27,1,0,28,29,1,0,30,32,3,0,17,18,28,29,33,33,
+        1,0,46,48,385,0,85,1,0,0,0,2,92,1,0,0,0,4,94,1,0,0,0,6,106,1,0,0,
+        0,8,111,1,0,0,0,10,123,1,0,0,0,12,125,1,0,0,0,14,133,1,0,0,0,16,
+        136,1,0,0,0,18,138,1,0,0,0,20,167,1,0,0,0,22,181,1,0,0,0,24,183,
+        1,0,0,0,26,192,1,0,0,0,28,198,1,0,0,0,30,216,1,0,0,0,32,218,1,0,
+        0,0,34,220,1,0,0,0,36,235,1,0,0,0,38,237,1,0,0,0,40,246,1,0,0,0,
+        42,254,1,0,0,0,44,256,1,0,0,0,46,258,1,0,0,0,48,262,1,0,0,0,50,264,
+        1,0,0,0,52,266,1,0,0,0,54,271,1,0,0,0,56,279,1,0,0,0,58,287,1,0,
+        0,0,60,295,1,0,0,0,62,303,1,0,0,0,64,311,1,0,0,0,66,322,1,0,0,0,
+        68,324,1,0,0,0,70,340,1,0,0,0,72,342,1,0,0,0,74,358,1,0,0,0,76,360,
+        1,0,0,0,78,362,1,0,0,0,80,368,1,0,0,0,82,84,3,2,1,0,83,82,1,0,0,
+        0,84,87,1,0,0,0,85,83,1,0,0,0,85,86,1,0,0,0,86,88,1,0,0,0,87,85,
+        1,0,0,0,88,89,5,0,0,1,89,1,1,0,0,0,90,93,3,4,2,0,91,93,3,8,4,0,92,
+        90,1,0,0,0,92,91,1,0,0,0,93,3,1,0,0,0,94,95,5,13,0,0,95,96,5,44,
+        0,0,96,100,5,39,0,0,97,99,3,6,3,0,98,97,1,0,0,0,99,102,1,0,0,0,100,
+        98,1,0,0,0,100,101,1,0,0,0,101,103,1,0,0,0,102,100,1,0,0,0,103,104,
+        5,40,0,0,104,105,5,42,0,0,105,5,1,0,0,0,106,107,3,16,8,0,107,108,
+        5,44,0,0,108,109,5,42,0,0,109,7,1,0,0,0,110,112,3,10,5,0,111,110,
+        1,0,0,0,111,112,1,0,0,0,112,113,1,0,0,0,113,114,5,44,0,0,114,116,
+        5,35,0,0,115,117,3,12,6,0,116,115,1,0,0,0,116,117,1,0,0,0,117,118,
+        1,0,0,0,118,119,5,36,0,0,119,120,3,18,9,0,120,9,1,0,0,0,121,124,
+        3,16,8,0,122,124,5,15,0,0,123,121,1,0,0,0,123,122,1,0,0,0,124,11,
+        1,0,0,0,125,130,3,14,7,0,126,127,5,41,0,0,127,129,3,14,7,0,128,126,
+        1,0,0,0,129,132,1,0,0,0,130,128,1,0,0,0,130,131,1,0,0,0,131,13,1,
+        0,0,0,132,130,1,0,0,0,133,134,3,16,8,0,134,135,5,44,0,0,135,15,1,
+        0,0,0,136,137,7,0,0,0,137,17,1,0,0,0,138,142,5,39,0,0,139,141,3,
+        20,10,0,140,139,1,0,0,0,141,144,1,0,0,0,142,140,1,0,0,0,142,143,
+        1,0,0,0,143,145,1,0,0,0,144,142,1,0,0,0,145,146,5,40,0,0,146,19,
+        1,0,0,0,147,168,3,18,9,0,148,149,3,22,11,0,149,150,5,42,0,0,150,
+        168,1,0,0,0,151,168,3,24,12,0,152,168,3,26,13,0,153,168,3,28,14,
+        0,154,168,3,34,17,0,155,156,3,42,21,0,156,157,5,42,0,0,157,168,1,
+        0,0,0,158,159,3,44,22,0,159,160,5,42,0,0,160,168,1,0,0,0,161,162,
+        3,46,23,0,162,163,5,42,0,0,163,168,1,0,0,0,164,165,3,48,24,0,165,
+        166,5,42,0,0,166,168,1,0,0,0,167,147,1,0,0,0,167,148,1,0,0,0,167,
+        151,1,0,0,0,167,152,1,0,0,0,167,153,1,0,0,0,167,154,1,0,0,0,167,
+        155,1,0,0,0,167,158,1,0,0,0,167,161,1,0,0,0,167,164,1,0,0,0,168,
+        21,1,0,0,0,169,170,5,1,0,0,170,173,5,44,0,0,171,172,5,25,0,0,172,
+        174,3,50,25,0,173,171,1,0,0,0,173,174,1,0,0,0,174,182,1,0,0,0,175,
+        176,3,16,8,0,176,179,5,44,0,0,177,178,5,25,0,0,178,180,3,50,25,0,
+        179,177,1,0,0,0,179,180,1,0,0,0,180,182,1,0,0,0,181,169,1,0,0,0,
+        181,175,1,0,0,0,182,23,1,0,0,0,183,184,5,9,0,0,184,185,5,35,0,0,
+        185,186,3,50,25,0,186,187,5,36,0,0,187,190,3,20,10,0,188,189,5,6,
+        0,0,189,191,3,20,10,0,190,188,1,0,0,0,190,191,1,0,0,0,191,25,1,0,
+        0,0,192,193,5,16,0,0,193,194,5,35,0,0,194,195,3,50,25,0,195,196,
+        5,36,0,0,196,197,3,20,10,0,197,27,1,0,0,0,198,199,5,8,0,0,199,201,
+        5,35,0,0,200,202,3,30,15,0,201,200,1,0,0,0,201,202,1,0,0,0,202,203,
+        1,0,0,0,203,205,5,42,0,0,204,206,3,50,25,0,205,204,1,0,0,0,205,206,
+        1,0,0,0,206,207,1,0,0,0,207,209,5,42,0,0,208,210,3,32,16,0,209,208,
+        1,0,0,0,209,210,1,0,0,0,210,211,1,0,0,0,211,212,5,36,0,0,212,213,
+        3,20,10,0,213,29,1,0,0,0,214,217,3,22,11,0,215,217,3,50,25,0,216,
+        214,1,0,0,0,216,215,1,0,0,0,217,31,1,0,0,0,218,219,3,50,25,0,219,
+        33,1,0,0,0,220,221,5,14,0,0,221,222,5,35,0,0,222,223,3,50,25,0,223,
+        224,5,36,0,0,224,228,5,39,0,0,225,227,3,36,18,0,226,225,1,0,0,0,
+        227,230,1,0,0,0,228,226,1,0,0,0,228,229,1,0,0,0,229,231,1,0,0,0,
+        230,228,1,0,0,0,231,232,5,40,0,0,232,35,1,0,0,0,233,236,3,38,19,
+        0,234,236,3,40,20,0,235,233,1,0,0,0,235,234,1,0,0,0,236,37,1,0,0,
+        0,237,238,5,3,0,0,238,239,3,50,25,0,239,243,5,43,0,0,240,242,3,20,
+        10,0,241,240,1,0,0,0,242,245,1,0,0,0,243,241,1,0,0,0,243,244,1,0,
+        0,0,244,39,1,0,0,0,245,243,1,0,0,0,246,247,5,5,0,0,247,251,5,43,
+        0,0,248,250,3,20,10,0,249,248,1,0,0,0,250,253,1,0,0,0,251,249,1,
+        0,0,0,251,252,1,0,0,0,252,41,1,0,0,0,253,251,1,0,0,0,254,255,5,2,
+        0,0,255,43,1,0,0,0,256,257,5,4,0,0,257,45,1,0,0,0,258,260,5,11,0,
+        0,259,261,3,50,25,0,260,259,1,0,0,0,260,261,1,0,0,0,261,47,1,0,0,
+        0,262,263,3,50,25,0,263,49,1,0,0,0,264,265,3,52,26,0,265,51,1,0,
+        0,0,266,269,3,54,27,0,267,268,5,25,0,0,268,270,3,52,26,0,269,267,
+        1,0,0,0,269,270,1,0,0,0,270,53,1,0,0,0,271,276,3,56,28,0,272,273,
+        5,24,0,0,273,275,3,56,28,0,274,272,1,0,0,0,275,278,1,0,0,0,276,274,
+        1,0,0,0,276,277,1,0,0,0,277,55,1,0,0,0,278,276,1,0,0,0,279,284,3,
+        58,29,0,280,281,5,23,0,0,281,283,3,58,29,0,282,280,1,0,0,0,283,286,
+        1,0,0,0,284,282,1,0,0,0,284,285,1,0,0,0,285,57,1,0,0,0,286,284,1,
+        0,0,0,287,292,3,60,30,0,288,289,7,1,0,0,289,291,3,60,30,0,290,288,
+        1,0,0,0,291,294,1,0,0,0,292,290,1,0,0,0,292,293,1,0,0,0,293,59,1,
+        0,0,0,294,292,1,0,0,0,295,300,3,62,31,0,296,297,7,2,0,0,297,299,
+        3,62,31,0,298,296,1,0,0,0,299,302,1,0,0,0,300,298,1,0,0,0,300,301,
+        1,0,0,0,301,61,1,0,0,0,302,300,1,0,0,0,303,308,3,64,32,0,304,305,
+        7,3,0,0,305,307,3,64,32,0,306,304,1,0,0,0,307,310,1,0,0,0,308,306,
+        1,0,0,0,308,309,1,0,0,0,309,63,1,0,0,0,310,308,1,0,0,0,311,316,3,
+        66,33,0,312,313,7,4,0,0,313,315,3,66,33,0,314,312,1,0,0,0,315,318,
+        1,0,0,0,316,314,1,0,0,0,316,317,1,0,0,0,317,65,1,0,0,0,318,316,1,
+        0,0,0,319,320,7,5,0,0,320,323,3,66,33,0,321,323,3,68,34,0,322,319,
+        1,0,0,0,322,321,1,0,0,0,323,67,1,0,0,0,324,328,3,74,37,0,325,327,
+        3,70,35,0,326,325,1,0,0,0,327,330,1,0,0,0,328,326,1,0,0,0,328,329,
+        1,0,0,0,329,69,1,0,0,0,330,328,1,0,0,0,331,333,5,35,0,0,332,334,
+        3,72,36,0,333,332,1,0,0,0,333,334,1,0,0,0,334,335,1,0,0,0,335,341,
+        5,36,0,0,336,337,5,34,0,0,337,341,5,44,0,0,338,341,5,17,0,0,339,
+        341,5,18,0,0,340,331,1,0,0,0,340,336,1,0,0,0,340,338,1,0,0,0,340,
+        339,1,0,0,0,341,71,1,0,0,0,342,347,3,50,25,0,343,344,5,41,0,0,344,
+        346,3,50,25,0,345,343,1,0,0,0,346,349,1,0,0,0,347,345,1,0,0,0,347,
+        348,1,0,0,0,348,73,1,0,0,0,349,347,1,0,0,0,350,359,3,76,38,0,351,
+        359,5,44,0,0,352,359,5,45,0,0,353,354,5,35,0,0,354,355,3,50,25,0,
+        355,356,5,36,0,0,356,359,1,0,0,0,357,359,3,78,39,0,358,350,1,0,0,
+        0,358,351,1,0,0,0,358,352,1,0,0,0,358,353,1,0,0,0,358,357,1,0,0,
+        0,359,75,1,0,0,0,360,361,7,6,0,0,361,77,1,0,0,0,362,364,5,39,0,0,
+        363,365,3,80,40,0,364,363,1,0,0,0,364,365,1,0,0,0,365,366,1,0,0,
+        0,366,367,5,40,0,0,367,79,1,0,0,0,368,373,3,50,25,0,369,370,5,41,
+        0,0,370,372,3,50,25,0,371,369,1,0,0,0,372,375,1,0,0,0,373,371,1,
+        0,0,0,373,374,1,0,0,0,374,81,1,0,0,0,375,373,1,0,0,0,37,85,92,100,
+        111,116,123,130,142,167,173,179,181,190,201,205,209,216,228,235,
+        243,251,260,269,276,284,292,300,308,316,322,328,333,340,347,358,
+        364,373
     ]
 
 class TyCParser ( Parser ):
@@ -117,103 +156,132 @@ class TyCParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'continue'", "'if'", "'else'", "'for'", 
-                     "'bool'", "'number'", "'string'", "'T'", "'F'", "'func'", 
-                     "'endfunc'", "'call'", "'return'", "'+'", "'-'", "'*'", 
-                     "'='", "'>'", "'<'", "'**'", "'#'", "'<-'", "'('", 
+    literalNames = [ "<INVALID>", "'auto'", "'break'", "'case'", "'continue'", 
+                     "'default'", "'else'", "'float'", "'for'", "'if'", 
+                     "'int'", "'return'", "'string'", "'struct'", "'switch'", 
+                     "'void'", "'while'", "'++'", "'--'", "'<='", "'>='", 
+                     "'=='", "'!='", "'&&'", "'||'", "'='", "'>'", "'<'", 
+                     "'+'", "'-'", "'*'", "'/'", "'%'", "'!'", "'.'", "'('", 
                      "')'", "'['", "']'", "'{'", "'}'", "','", "';'", "':'" ]
 
-    symbolicNames = [ "<INVALID>", "CONTINUE", "IF", "ELSE", "FOR", "BOOL", 
-                      "NUMBER", "STRING", "TRUE", "FALSE", "FUNC", "ENDFUNC", 
-                      "CALL", "RETURN", "PLUS", "SUB", "MUL", "EQ", "GT", 
-                      "LT", "POW", "HASH", "ARROW", "LPAREN", "RPAREN", 
-                      "LBRACK", "RBRACK", "LBRACE", "RBRACE", "COMMA", "SEMI", 
-                      "COLON", "ID", "GLOBAL_ID", "INT_LIT", "FLOAT_LIT", 
-                      "STRING_LIT", "LINE_COMMENT", "BLOCK_COMMENT", "WS", 
-                      "ERROR_CHAR", "ILLEGAL_ESCAPE", "UNCLOSE_STRING" ]
+    symbolicNames = [ "<INVALID>", "AUTO", "BREAK", "CASE", "CONTINUE", 
+                      "DEFAULT", "ELSE", "FLOAT", "FOR", "IF", "INT", "RETURN", 
+                      "STRING", "STRUCT", "SWITCH", "VOID", "WHILE", "INC", 
+                      "DEC", "LE", "GE", "EQ", "NEQ", "AND", "OR", "ASSIGN", 
+                      "GT", "LT", "ADD", "SUB", "MUL", "DIV", "MOD", "NOT", 
+                      "DOT", "LPAREN", "RPAREN", "LBRACK", "RBRACK", "LBRACE", 
+                      "RBRACE", "COMMA", "SEMI", "COLON", "ID", "GLOBAL_ID", 
+                      "FLOAT_LIT", "INT_LIT", "STRING_LIT", "LINE_COMMENT", 
+                      "BLOCK_COMMENT", "WS", "ERROR_CHAR", "ILLEGAL_ESCAPE", 
+                      "UNCLOSE_STRING" ]
 
-    RULE_list_expression = 0
-    RULE_expression = 1
-    RULE_expression1 = 2
-    RULE_expression2 = 3
-    RULE_expression3 = 4
-    RULE_expression4 = 5
-    RULE_expression5 = 6
-    RULE_expression6 = 7
-    RULE_function_call = 8
-    RULE_list_literal = 9
-    RULE_literal = 10
-    RULE_array_lit = 11
-    RULE_program = 12
-    RULE_variable = 13
-    RULE_function = 14
-    RULE_list_param = 15
-    RULE_param = 16
-    RULE_all_type = 17
-    RULE_list_statement = 18
-    RULE_statement = 19
-    RULE_declared_statement = 20
-    RULE_assign_statement = 21
-    RULE_lhs = 22
-    RULE_if_statement = 23
-    RULE_for_statement = 24
-    RULE_continue_statement = 25
-    RULE_call_statement = 26
-    RULE_return_statement = 27
-    RULE_block_statement = 28
+    RULE_program = 0
+    RULE_decl = 1
+    RULE_struct_decl = 2
+    RULE_member_decl = 3
+    RULE_func_decl = 4
+    RULE_return_type = 5
+    RULE_param_list = 6
+    RULE_param = 7
+    RULE_type_spec = 8
+    RULE_block_stmt = 9
+    RULE_statement = 10
+    RULE_var_decl = 11
+    RULE_if_stmt = 12
+    RULE_while_stmt = 13
+    RULE_for_stmt = 14
+    RULE_for_init = 15
+    RULE_for_update = 16
+    RULE_switch_stmt = 17
+    RULE_switch_block_item = 18
+    RULE_case_clause = 19
+    RULE_default_clause = 20
+    RULE_break_stmt = 21
+    RULE_continue_stmt = 22
+    RULE_return_stmt = 23
+    RULE_expr_stmt = 24
+    RULE_expr = 25
+    RULE_assignment = 26
+    RULE_logical_or = 27
+    RULE_logical_and = 28
+    RULE_equality = 29
+    RULE_relational = 30
+    RULE_additive = 31
+    RULE_multiplicative = 32
+    RULE_unary = 33
+    RULE_postfix = 34
+    RULE_postfix_part = 35
+    RULE_arg_list = 36
+    RULE_primary = 37
+    RULE_literal = 38
+    RULE_struct_literal = 39
+    RULE_expr_list = 40
 
-    ruleNames =  [ "list_expression", "expression", "expression1", "expression2", 
-                   "expression3", "expression4", "expression5", "expression6", 
-                   "function_call", "list_literal", "literal", "array_lit", 
-                   "program", "variable", "function", "list_param", "param", 
-                   "all_type", "list_statement", "statement", "declared_statement", 
-                   "assign_statement", "lhs", "if_statement", "for_statement", 
-                   "continue_statement", "call_statement", "return_statement", 
-                   "block_statement" ]
+    ruleNames =  [ "program", "decl", "struct_decl", "member_decl", "func_decl", 
+                   "return_type", "param_list", "param", "type_spec", "block_stmt", 
+                   "statement", "var_decl", "if_stmt", "while_stmt", "for_stmt", 
+                   "for_init", "for_update", "switch_stmt", "switch_block_item", 
+                   "case_clause", "default_clause", "break_stmt", "continue_stmt", 
+                   "return_stmt", "expr_stmt", "expr", "assignment", "logical_or", 
+                   "logical_and", "equality", "relational", "additive", 
+                   "multiplicative", "unary", "postfix", "postfix_part", 
+                   "arg_list", "primary", "literal", "struct_literal", "expr_list" ]
 
     EOF = Token.EOF
-    CONTINUE=1
-    IF=2
-    ELSE=3
-    FOR=4
-    BOOL=5
-    NUMBER=6
-    STRING=7
-    TRUE=8
-    FALSE=9
-    FUNC=10
-    ENDFUNC=11
-    CALL=12
-    RETURN=13
-    PLUS=14
-    SUB=15
-    MUL=16
-    EQ=17
-    GT=18
-    LT=19
-    POW=20
-    HASH=21
-    ARROW=22
-    LPAREN=23
-    RPAREN=24
-    LBRACK=25
-    RBRACK=26
-    LBRACE=27
-    RBRACE=28
-    COMMA=29
-    SEMI=30
-    COLON=31
-    ID=32
-    GLOBAL_ID=33
-    INT_LIT=34
-    FLOAT_LIT=35
-    STRING_LIT=36
-    LINE_COMMENT=37
-    BLOCK_COMMENT=38
-    WS=39
-    ERROR_CHAR=40
-    ILLEGAL_ESCAPE=41
-    UNCLOSE_STRING=42
+    AUTO=1
+    BREAK=2
+    CASE=3
+    CONTINUE=4
+    DEFAULT=5
+    ELSE=6
+    FLOAT=7
+    FOR=8
+    IF=9
+    INT=10
+    RETURN=11
+    STRING=12
+    STRUCT=13
+    SWITCH=14
+    VOID=15
+    WHILE=16
+    INC=17
+    DEC=18
+    LE=19
+    GE=20
+    EQ=21
+    NEQ=22
+    AND=23
+    OR=24
+    ASSIGN=25
+    GT=26
+    LT=27
+    ADD=28
+    SUB=29
+    MUL=30
+    DIV=31
+    MOD=32
+    NOT=33
+    DOT=34
+    LPAREN=35
+    RPAREN=36
+    LBRACK=37
+    RBRACK=38
+    LBRACE=39
+    RBRACE=40
+    COMMA=41
+    SEMI=42
+    COLON=43
+    ID=44
+    GLOBAL_ID=45
+    FLOAT_LIT=46
+    INT_LIT=47
+    STRING_LIT=48
+    LINE_COMMENT=49
+    BLOCK_COMMENT=50
+    WS=51
+    ERROR_CHAR=52
+    ILLEGAL_ESCAPE=53
+    UNCLOSE_STRING=54
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -222,780 +290,6 @@ class TyCParser ( Parser ):
         self._predicates = None
 
 
-
-
-    class List_expressionContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
-
-
-        def COMMA(self):
-            return self.getToken(TyCParser.COMMA, 0)
-
-        def list_expression(self):
-            return self.getTypedRuleContext(TyCParser.List_expressionContext,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_list_expression
-
-
-
-
-    def list_expression(self):
-
-        localctx = TyCParser.List_expressionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 0, self.RULE_list_expression)
-        try:
-            self.state = 63
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 58
-                self.expression()
-                self.state = 59
-                self.match(TyCParser.COMMA)
-                self.state = 60
-                self.list_expression()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 62
-                self.expression()
-                pass
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class ExpressionContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def expression1(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(TyCParser.Expression1Context)
-            else:
-                return self.getTypedRuleContext(TyCParser.Expression1Context,i)
-
-
-        def GT(self):
-            return self.getToken(TyCParser.GT, 0)
-
-        def LT(self):
-            return self.getToken(TyCParser.LT, 0)
-
-        def EQ(self):
-            return self.getToken(TyCParser.EQ, 0)
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_expression
-
-
-
-
-    def expression(self):
-
-        localctx = TyCParser.ExpressionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 2, self.RULE_expression)
-        self._la = 0 # Token type
-        try:
-            self.state = 70
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 65
-                self.expression1()
-                self.state = 66
-                _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 917504) != 0)):
-                    self._errHandler.recoverInline(self)
-                else:
-                    self._errHandler.reportMatch(self)
-                    self.consume()
-                self.state = 67
-                self.expression1()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 69
-                self.expression1()
-                pass
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Expression1Context(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def expression2(self):
-            return self.getTypedRuleContext(TyCParser.Expression2Context,0)
-
-
-        def POW(self):
-            return self.getToken(TyCParser.POW, 0)
-
-        def expression1(self):
-            return self.getTypedRuleContext(TyCParser.Expression1Context,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_expression1
-
-
-
-
-    def expression1(self):
-
-        localctx = TyCParser.Expression1Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_expression1)
-        try:
-            self.state = 77
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 72
-                self.expression2(0)
-                self.state = 73
-                self.match(TyCParser.POW)
-                self.state = 74
-                self.expression1()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 76
-                self.expression2(0)
-                pass
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Expression2Context(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def expression3(self):
-            return self.getTypedRuleContext(TyCParser.Expression3Context,0)
-
-
-        def expression2(self):
-            return self.getTypedRuleContext(TyCParser.Expression2Context,0)
-
-
-        def PLUS(self):
-            return self.getToken(TyCParser.PLUS, 0)
-
-        def SUB(self):
-            return self.getToken(TyCParser.SUB, 0)
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_expression2
-
-
-
-    def expression2(self, _p:int=0):
-        _parentctx = self._ctx
-        _parentState = self.state
-        localctx = TyCParser.Expression2Context(self, self._ctx, _parentState)
-        _prevctx = localctx
-        _startState = 6
-        self.enterRecursionRule(localctx, 6, self.RULE_expression2, _p)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 80
-            self.expression3(0)
-            self._ctx.stop = self._input.LT(-1)
-            self.state = 87
-            self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
-                    if self._parseListeners is not None:
-                        self.triggerExitRuleEvent()
-                    _prevctx = localctx
-                    localctx = TyCParser.Expression2Context(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_expression2)
-                    self.state = 82
-                    if not self.precpred(self._ctx, 2):
-                        from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                    self.state = 83
-                    _la = self._input.LA(1)
-                    if not(_la==14 or _la==15):
-                        self._errHandler.recoverInline(self)
-                    else:
-                        self._errHandler.reportMatch(self)
-                        self.consume()
-                    self.state = 84
-                    self.expression3(0) 
-                self.state = 89
-                self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.unrollRecursionContexts(_parentctx)
-        return localctx
-
-
-    class Expression3Context(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def expression4(self):
-            return self.getTypedRuleContext(TyCParser.Expression4Context,0)
-
-
-        def expression3(self):
-            return self.getTypedRuleContext(TyCParser.Expression3Context,0)
-
-
-        def MUL(self):
-            return self.getToken(TyCParser.MUL, 0)
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_expression3
-
-
-
-    def expression3(self, _p:int=0):
-        _parentctx = self._ctx
-        _parentState = self.state
-        localctx = TyCParser.Expression3Context(self, self._ctx, _parentState)
-        _prevctx = localctx
-        _startState = 8
-        self.enterRecursionRule(localctx, 8, self.RULE_expression3, _p)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 91
-            self.expression4()
-            self._ctx.stop = self._input.LT(-1)
-            self.state = 98
-            self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
-                    if self._parseListeners is not None:
-                        self.triggerExitRuleEvent()
-                    _prevctx = localctx
-                    localctx = TyCParser.Expression3Context(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_expression3)
-                    self.state = 93
-                    if not self.precpred(self._ctx, 2):
-                        from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                    self.state = 94
-                    self.match(TyCParser.MUL)
-                    self.state = 95
-                    self.expression4() 
-                self.state = 100
-                self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,4,self._ctx)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.unrollRecursionContexts(_parentctx)
-        return localctx
-
-
-    class Expression4Context(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def SUB(self):
-            return self.getToken(TyCParser.SUB, 0)
-
-        def expression4(self):
-            return self.getTypedRuleContext(TyCParser.Expression4Context,0)
-
-
-        def expression5(self):
-            return self.getTypedRuleContext(TyCParser.Expression5Context,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_expression4
-
-
-
-
-    def expression4(self):
-
-        localctx = TyCParser.Expression4Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_expression4)
-        try:
-            self.state = 104
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [15]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 101
-                self.match(TyCParser.SUB)
-                self.state = 102
-                self.expression4()
-                pass
-            elif token in [8, 9, 12, 19, 23, 25, 32, 33, 34, 35, 36]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 103
-                self.expression5()
-                pass
-            else:
-                raise NoViableAltException(self)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Expression5Context(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def LBRACK(self):
-            return self.getToken(TyCParser.LBRACK, 0)
-
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
-
-
-        def RBRACK(self):
-            return self.getToken(TyCParser.RBRACK, 0)
-
-        def expression5(self):
-            return self.getTypedRuleContext(TyCParser.Expression5Context,0)
-
-
-        def expression6(self):
-            return self.getTypedRuleContext(TyCParser.Expression6Context,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_expression5
-
-
-
-
-    def expression5(self):
-
-        localctx = TyCParser.Expression5Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_expression5)
-        try:
-            self.state = 112
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [25]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 106
-                self.match(TyCParser.LBRACK)
-                self.state = 107
-                self.expression()
-                self.state = 108
-                self.match(TyCParser.RBRACK)
-                self.state = 109
-                self.expression5()
-                pass
-            elif token in [8, 9, 12, 19, 23, 32, 33, 34, 35, 36]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 111
-                self.expression6()
-                pass
-            else:
-                raise NoViableAltException(self)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Expression6Context(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def ID(self):
-            return self.getToken(TyCParser.ID, 0)
-
-        def GLOBAL_ID(self):
-            return self.getToken(TyCParser.GLOBAL_ID, 0)
-
-        def literal(self):
-            return self.getTypedRuleContext(TyCParser.LiteralContext,0)
-
-
-        def function_call(self):
-            return self.getTypedRuleContext(TyCParser.Function_callContext,0)
-
-
-        def LPAREN(self):
-            return self.getToken(TyCParser.LPAREN, 0)
-
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
-
-
-        def RPAREN(self):
-            return self.getToken(TyCParser.RPAREN, 0)
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_expression6
-
-
-
-
-    def expression6(self):
-
-        localctx = TyCParser.Expression6Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_expression6)
-        try:
-            self.state = 122
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [32]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 114
-                self.match(TyCParser.ID)
-                pass
-            elif token in [33]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 115
-                self.match(TyCParser.GLOBAL_ID)
-                pass
-            elif token in [8, 9, 19, 34, 35, 36]:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 116
-                self.literal()
-                pass
-            elif token in [12]:
-                self.enterOuterAlt(localctx, 4)
-                self.state = 117
-                self.function_call()
-                pass
-            elif token in [23]:
-                self.enterOuterAlt(localctx, 5)
-                self.state = 118
-                self.match(TyCParser.LPAREN)
-                self.state = 119
-                self.expression()
-                self.state = 120
-                self.match(TyCParser.RPAREN)
-                pass
-            else:
-                raise NoViableAltException(self)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Function_callContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def CALL(self):
-            return self.getToken(TyCParser.CALL, 0)
-
-        def ID(self):
-            return self.getToken(TyCParser.ID, 0)
-
-        def ARROW(self):
-            return self.getToken(TyCParser.ARROW, 0)
-
-        def list_expression(self):
-            return self.getTypedRuleContext(TyCParser.List_expressionContext,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_function_call
-
-
-
-
-    def function_call(self):
-
-        localctx = TyCParser.Function_callContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_function_call)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 124
-            self.match(TyCParser.CALL)
-            self.state = 125
-            self.match(TyCParser.ID)
-            self.state = 128
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
-            if la_ == 1:
-                self.state = 126
-                self.match(TyCParser.ARROW)
-                self.state = 127
-                self.list_expression()
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class List_literalContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def literal(self):
-            return self.getTypedRuleContext(TyCParser.LiteralContext,0)
-
-
-        def COMMA(self):
-            return self.getToken(TyCParser.COMMA, 0)
-
-        def list_literal(self):
-            return self.getTypedRuleContext(TyCParser.List_literalContext,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_list_literal
-
-
-
-
-    def list_literal(self):
-
-        localctx = TyCParser.List_literalContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_list_literal)
-        try:
-            self.state = 135
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 130
-                self.literal()
-                self.state = 131
-                self.match(TyCParser.COMMA)
-                self.state = 132
-                self.list_literal()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 134
-                self.literal()
-                pass
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class LiteralContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def TRUE(self):
-            return self.getToken(TyCParser.TRUE, 0)
-
-        def FALSE(self):
-            return self.getToken(TyCParser.FALSE, 0)
-
-        def INT_LIT(self):
-            return self.getToken(TyCParser.INT_LIT, 0)
-
-        def FLOAT_LIT(self):
-            return self.getToken(TyCParser.FLOAT_LIT, 0)
-
-        def STRING_LIT(self):
-            return self.getToken(TyCParser.STRING_LIT, 0)
-
-        def array_lit(self):
-            return self.getTypedRuleContext(TyCParser.Array_litContext,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_literal
-
-
-
-
-    def literal(self):
-
-        localctx = TyCParser.LiteralContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_literal)
-        try:
-            self.state = 143
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [8]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 137
-                self.match(TyCParser.TRUE)
-                pass
-            elif token in [9]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 138
-                self.match(TyCParser.FALSE)
-                pass
-            elif token in [34]:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 139
-                self.match(TyCParser.INT_LIT)
-                pass
-            elif token in [35]:
-                self.enterOuterAlt(localctx, 4)
-                self.state = 140
-                self.match(TyCParser.FLOAT_LIT)
-                pass
-            elif token in [36]:
-                self.enterOuterAlt(localctx, 5)
-                self.state = 141
-                self.match(TyCParser.STRING_LIT)
-                pass
-            elif token in [19]:
-                self.enterOuterAlt(localctx, 6)
-                self.state = 142
-                self.array_lit()
-                pass
-            else:
-                raise NoViableAltException(self)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Array_litContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def LT(self):
-            return self.getToken(TyCParser.LT, 0)
-
-        def list_literal(self):
-            return self.getTypedRuleContext(TyCParser.List_literalContext,0)
-
-
-        def GT(self):
-            return self.getToken(TyCParser.GT, 0)
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_array_lit
-
-
-
-
-    def array_lit(self):
-
-        localctx = TyCParser.Array_litContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_array_lit)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 145
-            self.match(TyCParser.LT)
-            self.state = 146
-            self.list_literal()
-            self.state = 147
-            self.match(TyCParser.GT)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
 
 
     class ProgramContext(ParserRuleContext):
@@ -1008,18 +302,11 @@ class TyCParser ( Parser ):
         def EOF(self):
             return self.getToken(TyCParser.EOF, 0)
 
-        def variable(self, i:int=None):
+        def decl(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(TyCParser.VariableContext)
+                return self.getTypedRuleContexts(TyCParser.DeclContext)
             else:
-                return self.getTypedRuleContext(TyCParser.VariableContext,i)
-
-
-        def function(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(TyCParser.FunctionContext)
-            else:
-                return self.getTypedRuleContext(TyCParser.FunctionContext,i)
+                return self.getTypedRuleContext(TyCParser.DeclContext,i)
 
 
         def getRuleIndex(self):
@@ -1031,31 +318,21 @@ class TyCParser ( Parser ):
     def program(self):
 
         localctx = TyCParser.ProgramContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_program)
+        self.enterRule(localctx, 0, self.RULE_program)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 152
+            self.state = 85
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 224) != 0):
-                self.state = 149
-                self.variable()
-                self.state = 154
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 52776558179456) != 0):
+                self.state = 82
+                self.decl()
+                self.state = 87
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 158
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==10:
-                self.state = 155
-                self.function()
-                self.state = 160
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 161
+            self.state = 88
             self.match(TyCParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -1066,51 +343,118 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class VariableContext(ParserRuleContext):
+    class DeclContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def all_type(self):
-            return self.getTypedRuleContext(TyCParser.All_typeContext,0)
+        def struct_decl(self):
+            return self.getTypedRuleContext(TyCParser.Struct_declContext,0)
 
 
-        def GLOBAL_ID(self):
-            return self.getToken(TyCParser.GLOBAL_ID, 0)
+        def func_decl(self):
+            return self.getTypedRuleContext(TyCParser.Func_declContext,0)
 
-        def EQ(self):
-            return self.getToken(TyCParser.EQ, 0)
 
-        def literal(self):
-            return self.getTypedRuleContext(TyCParser.LiteralContext,0)
+        def getRuleIndex(self):
+            return TyCParser.RULE_decl
 
+
+
+
+    def decl(self):
+
+        localctx = TyCParser.DeclContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 2, self.RULE_decl)
+        try:
+            self.state = 92
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [13]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 90
+                self.struct_decl()
+                pass
+            elif token in [7, 10, 12, 15, 44, 45]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 91
+                self.func_decl()
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Struct_declContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def STRUCT(self):
+            return self.getToken(TyCParser.STRUCT, 0)
+
+        def ID(self):
+            return self.getToken(TyCParser.ID, 0)
+
+        def LBRACE(self):
+            return self.getToken(TyCParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(TyCParser.RBRACE, 0)
 
         def SEMI(self):
             return self.getToken(TyCParser.SEMI, 0)
 
+        def member_decl(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.Member_declContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.Member_declContext,i)
+
+
         def getRuleIndex(self):
-            return TyCParser.RULE_variable
+            return TyCParser.RULE_struct_decl
 
 
 
 
-    def variable(self):
+    def struct_decl(self):
 
-        localctx = TyCParser.VariableContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_variable)
+        localctx = TyCParser.Struct_declContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_struct_decl)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 163
-            self.all_type()
-            self.state = 164
-            self.match(TyCParser.GLOBAL_ID)
-            self.state = 165
-            self.match(TyCParser.EQ)
-            self.state = 166
-            self.literal()
-            self.state = 167
+            self.state = 94
+            self.match(TyCParser.STRUCT)
+            self.state = 95
+            self.match(TyCParser.ID)
+            self.state = 96
+            self.match(TyCParser.LBRACE)
+            self.state = 100
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 52776558138496) != 0):
+                self.state = 97
+                self.member_decl()
+                self.state = 102
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 103
+            self.match(TyCParser.RBRACE)
+            self.state = 104
             self.match(TyCParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
@@ -1121,15 +465,56 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class FunctionContext(ParserRuleContext):
+    class Member_declContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def FUNC(self):
-            return self.getToken(TyCParser.FUNC, 0)
+        def type_spec(self):
+            return self.getTypedRuleContext(TyCParser.Type_specContext,0)
+
+
+        def ID(self):
+            return self.getToken(TyCParser.ID, 0)
+
+        def SEMI(self):
+            return self.getToken(TyCParser.SEMI, 0)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_member_decl
+
+
+
+
+    def member_decl(self):
+
+        localctx = TyCParser.Member_declContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_member_decl)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 106
+            self.type_spec()
+            self.state = 107
+            self.match(TyCParser.ID)
+            self.state = 108
+            self.match(TyCParser.SEMI)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Func_declContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
 
         def ID(self):
             return self.getToken(TyCParser.ID, 0)
@@ -1140,67 +525,55 @@ class TyCParser ( Parser ):
         def RPAREN(self):
             return self.getToken(TyCParser.RPAREN, 0)
 
-        def COLON(self):
-            return self.getToken(TyCParser.COLON, 0)
-
-        def list_statement(self):
-            return self.getTypedRuleContext(TyCParser.List_statementContext,0)
+        def block_stmt(self):
+            return self.getTypedRuleContext(TyCParser.Block_stmtContext,0)
 
 
-        def ENDFUNC(self):
-            return self.getToken(TyCParser.ENDFUNC, 0)
-
-        def all_type(self):
-            return self.getTypedRuleContext(TyCParser.All_typeContext,0)
+        def return_type(self):
+            return self.getTypedRuleContext(TyCParser.Return_typeContext,0)
 
 
-        def list_param(self):
-            return self.getTypedRuleContext(TyCParser.List_paramContext,0)
+        def param_list(self):
+            return self.getTypedRuleContext(TyCParser.Param_listContext,0)
 
 
         def getRuleIndex(self):
-            return TyCParser.RULE_function
+            return TyCParser.RULE_func_decl
 
 
 
 
-    def function(self):
+    def func_decl(self):
 
-        localctx = TyCParser.FunctionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_function)
+        localctx = TyCParser.Func_declContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 8, self.RULE_func_decl)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 169
-            self.match(TyCParser.FUNC)
-            self.state = 171
+            self.state = 111
             self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 224) != 0):
-                self.state = 170
-                self.all_type()
+            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
+            if la_ == 1:
+                self.state = 110
+                self.return_type()
 
 
-            self.state = 173
+            self.state = 113
             self.match(TyCParser.ID)
-            self.state = 174
+            self.state = 114
             self.match(TyCParser.LPAREN)
-            self.state = 176
+            self.state = 116
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==32:
-                self.state = 175
-                self.list_param()
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 52776558138496) != 0):
+                self.state = 115
+                self.param_list()
 
 
-            self.state = 178
+            self.state = 118
             self.match(TyCParser.RPAREN)
-            self.state = 179
-            self.match(TyCParser.COLON)
-            self.state = 180
-            self.list_statement()
-            self.state = 181
-            self.match(TyCParser.ENDFUNC)
+            self.state = 119
+            self.block_stmt()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1210,54 +583,102 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class List_paramContext(ParserRuleContext):
+    class Return_typeContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def param(self):
-            return self.getTypedRuleContext(TyCParser.ParamContext,0)
+        def type_spec(self):
+            return self.getTypedRuleContext(TyCParser.Type_specContext,0)
 
 
-        def COMMA(self):
-            return self.getToken(TyCParser.COMMA, 0)
-
-        def list_param(self):
-            return self.getTypedRuleContext(TyCParser.List_paramContext,0)
-
+        def VOID(self):
+            return self.getToken(TyCParser.VOID, 0)
 
         def getRuleIndex(self):
-            return TyCParser.RULE_list_param
+            return TyCParser.RULE_return_type
 
 
 
 
-    def list_param(self):
+    def return_type(self):
 
-        localctx = TyCParser.List_paramContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_list_param)
+        localctx = TyCParser.Return_typeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 10, self.RULE_return_type)
         try:
-            self.state = 188
+            self.state = 123
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
-            if la_ == 1:
+            token = self._input.LA(1)
+            if token in [7, 10, 12, 44, 45]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 183
-                self.param()
-                self.state = 184
-                self.match(TyCParser.COMMA)
-                self.state = 185
-                self.list_param()
+                self.state = 121
+                self.type_spec()
                 pass
-
-            elif la_ == 2:
+            elif token in [15]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 187
-                self.param()
+                self.state = 122
+                self.match(TyCParser.VOID)
                 pass
+            else:
+                raise NoViableAltException(self)
 
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Param_listContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def param(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.ParamContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.ParamContext,i)
+
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.COMMA)
+            else:
+                return self.getToken(TyCParser.COMMA, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_param_list
+
+
+
+
+    def param_list(self):
+
+        localctx = TyCParser.Param_listContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 12, self.RULE_param_list)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 125
+            self.param()
+            self.state = 130
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==41:
+                self.state = 126
+                self.match(TyCParser.COMMA)
+                self.state = 127
+                self.param()
+                self.state = 132
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1275,15 +696,12 @@ class TyCParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def type_spec(self):
+            return self.getTypedRuleContext(TyCParser.Type_specContext,0)
+
+
         def ID(self):
             return self.getToken(TyCParser.ID, 0)
-
-        def COLON(self):
-            return self.getToken(TyCParser.COLON, 0)
-
-        def all_type(self):
-            return self.getTypedRuleContext(TyCParser.All_typeContext,0)
-
 
         def getRuleIndex(self):
             return TyCParser.RULE_param
@@ -1294,15 +712,13 @@ class TyCParser ( Parser ):
     def param(self):
 
         localctx = TyCParser.ParamContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_param)
+        self.enterRule(localctx, 14, self.RULE_param)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 190
+            self.state = 133
+            self.type_spec()
+            self.state = 134
             self.match(TyCParser.ID)
-            self.state = 191
-            self.match(TyCParser.COLON)
-            self.state = 192
-            self.all_type()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1312,38 +728,44 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class All_typeContext(ParserRuleContext):
+    class Type_specContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def NUMBER(self):
-            return self.getToken(TyCParser.NUMBER, 0)
+        def INT(self):
+            return self.getToken(TyCParser.INT, 0)
 
-        def BOOL(self):
-            return self.getToken(TyCParser.BOOL, 0)
+        def FLOAT(self):
+            return self.getToken(TyCParser.FLOAT, 0)
 
         def STRING(self):
             return self.getToken(TyCParser.STRING, 0)
 
+        def ID(self):
+            return self.getToken(TyCParser.ID, 0)
+
+        def GLOBAL_ID(self):
+            return self.getToken(TyCParser.GLOBAL_ID, 0)
+
         def getRuleIndex(self):
-            return TyCParser.RULE_all_type
+            return TyCParser.RULE_type_spec
 
 
 
 
-    def all_type(self):
+    def type_spec(self):
 
-        localctx = TyCParser.All_typeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_all_type)
+        localctx = TyCParser.Type_specContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 16, self.RULE_type_spec)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 194
+            self.state = 136
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 224) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 52776558138496) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1357,50 +779,53 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class List_statementContext(ParserRuleContext):
+    class Block_stmtContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def statement(self):
-            return self.getTypedRuleContext(TyCParser.StatementContext,0)
+        def LBRACE(self):
+            return self.getToken(TyCParser.LBRACE, 0)
 
+        def RBRACE(self):
+            return self.getToken(TyCParser.RBRACE, 0)
 
-        def list_statement(self):
-            return self.getTypedRuleContext(TyCParser.List_statementContext,0)
+        def statement(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.StatementContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.StatementContext,i)
 
 
         def getRuleIndex(self):
-            return TyCParser.RULE_list_statement
+            return TyCParser.RULE_block_stmt
 
 
 
 
-    def list_statement(self):
+    def block_stmt(self):
 
-        localctx = TyCParser.List_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_list_statement)
+        localctx = TyCParser.Block_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 18, self.RULE_block_stmt)
+        self._la = 0 # Token type
         try:
-            self.state = 200
+            self.enterOuterAlt(localctx, 1)
+            self.state = 138
+            self.match(TyCParser.LBRACE)
+            self.state = 142
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 196
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278653334) != 0):
+                self.state = 139
                 self.statement()
-                self.state = 197
-                self.list_statement()
-                pass
+                self.state = 144
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
 
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 199
-                self.statement()
-                pass
-
-
+            self.state = 145
+            self.match(TyCParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1417,39 +842,47 @@ class TyCParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def declared_statement(self):
-            return self.getTypedRuleContext(TyCParser.Declared_statementContext,0)
+        def block_stmt(self):
+            return self.getTypedRuleContext(TyCParser.Block_stmtContext,0)
+
+
+        def var_decl(self):
+            return self.getTypedRuleContext(TyCParser.Var_declContext,0)
 
 
         def SEMI(self):
             return self.getToken(TyCParser.SEMI, 0)
 
-        def assign_statement(self):
-            return self.getTypedRuleContext(TyCParser.Assign_statementContext,0)
+        def if_stmt(self):
+            return self.getTypedRuleContext(TyCParser.If_stmtContext,0)
 
 
-        def if_statement(self):
-            return self.getTypedRuleContext(TyCParser.If_statementContext,0)
+        def while_stmt(self):
+            return self.getTypedRuleContext(TyCParser.While_stmtContext,0)
 
 
-        def for_statement(self):
-            return self.getTypedRuleContext(TyCParser.For_statementContext,0)
+        def for_stmt(self):
+            return self.getTypedRuleContext(TyCParser.For_stmtContext,0)
 
 
-        def continue_statement(self):
-            return self.getTypedRuleContext(TyCParser.Continue_statementContext,0)
+        def switch_stmt(self):
+            return self.getTypedRuleContext(TyCParser.Switch_stmtContext,0)
 
 
-        def call_statement(self):
-            return self.getTypedRuleContext(TyCParser.Call_statementContext,0)
+        def break_stmt(self):
+            return self.getTypedRuleContext(TyCParser.Break_stmtContext,0)
 
 
-        def return_statement(self):
-            return self.getTypedRuleContext(TyCParser.Return_statementContext,0)
+        def continue_stmt(self):
+            return self.getTypedRuleContext(TyCParser.Continue_stmtContext,0)
 
 
-        def block_statement(self):
-            return self.getTypedRuleContext(TyCParser.Block_statementContext,0)
+        def return_stmt(self):
+            return self.getTypedRuleContext(TyCParser.Return_stmtContext,0)
+
+
+        def expr_stmt(self):
+            return self.getTypedRuleContext(TyCParser.Expr_stmtContext,0)
 
 
         def getRuleIndex(self):
@@ -1461,63 +894,81 @@ class TyCParser ( Parser ):
     def statement(self):
 
         localctx = TyCParser.StatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_statement)
+        self.enterRule(localctx, 20, self.RULE_statement)
         try:
-            self.state = 220
+            self.state = 167
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [5, 6, 7]:
+            la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
+            if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 202
-                self.declared_statement()
-                self.state = 203
-                self.match(TyCParser.SEMI)
+                self.state = 147
+                self.block_stmt()
                 pass
-            elif token in [25, 32]:
+
+            elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 205
-                self.assign_statement()
-                self.state = 206
+                self.state = 148
+                self.var_decl()
+                self.state = 149
                 self.match(TyCParser.SEMI)
                 pass
-            elif token in [2]:
+
+            elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 208
-                self.if_statement()
+                self.state = 151
+                self.if_stmt()
                 pass
-            elif token in [4]:
+
+            elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 209
-                self.for_statement()
+                self.state = 152
+                self.while_stmt()
                 pass
-            elif token in [1]:
+
+            elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 210
-                self.continue_statement()
-                self.state = 211
-                self.match(TyCParser.SEMI)
+                self.state = 153
+                self.for_stmt()
                 pass
-            elif token in [12]:
+
+            elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 213
-                self.call_statement()
-                self.state = 214
-                self.match(TyCParser.SEMI)
+                self.state = 154
+                self.switch_stmt()
                 pass
-            elif token in [13]:
+
+            elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 216
-                self.return_statement()
-                self.state = 217
+                self.state = 155
+                self.break_stmt()
+                self.state = 156
                 self.match(TyCParser.SEMI)
                 pass
-            elif token in [27]:
+
+            elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 219
-                self.block_statement()
+                self.state = 158
+                self.continue_stmt()
+                self.state = 159
+                self.match(TyCParser.SEMI)
                 pass
-            else:
-                raise NoViableAltException(self)
+
+            elif la_ == 9:
+                self.enterOuterAlt(localctx, 9)
+                self.state = 161
+                self.return_stmt()
+                self.state = 162
+                self.match(TyCParser.SEMI)
+                pass
+
+            elif la_ == 10:
+                self.enterOuterAlt(localctx, 10)
+                self.state = 164
+                self.expr_stmt()
+                self.state = 165
+                self.match(TyCParser.SEMI)
+                pass
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1528,154 +979,78 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class Declared_statementContext(ParserRuleContext):
+    class Var_declContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def all_type(self):
-            return self.getTypedRuleContext(TyCParser.All_typeContext,0)
-
+        def AUTO(self):
+            return self.getToken(TyCParser.AUTO, 0)
 
         def ID(self):
             return self.getToken(TyCParser.ID, 0)
 
-        def ARROW(self):
-            return self.getToken(TyCParser.ARROW, 0)
+        def ASSIGN(self):
+            return self.getToken(TyCParser.ASSIGN, 0)
 
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_declared_statement
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
 
 
-
-
-    def declared_statement(self):
-
-        localctx = TyCParser.Declared_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 40, self.RULE_declared_statement)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 222
-            self.all_type()
-            self.state = 223
-            self.match(TyCParser.ID)
-            self.state = 224
-            self.match(TyCParser.ARROW)
-            self.state = 225
-            self.expression()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Assign_statementContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def lhs(self):
-            return self.getTypedRuleContext(TyCParser.LhsContext,0)
-
-
-        def ARROW(self):
-            return self.getToken(TyCParser.ARROW, 0)
-
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
+        def type_spec(self):
+            return self.getTypedRuleContext(TyCParser.Type_specContext,0)
 
 
         def getRuleIndex(self):
-            return TyCParser.RULE_assign_statement
+            return TyCParser.RULE_var_decl
 
 
 
 
-    def assign_statement(self):
+    def var_decl(self):
 
-        localctx = TyCParser.Assign_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 42, self.RULE_assign_statement)
+        localctx = TyCParser.Var_declContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 22, self.RULE_var_decl)
+        self._la = 0 # Token type
         try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 227
-            self.lhs()
-            self.state = 228
-            self.match(TyCParser.ARROW)
-            self.state = 229
-            self.expression()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class LhsContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def LBRACK(self):
-            return self.getToken(TyCParser.LBRACK, 0)
-
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
-
-
-        def RBRACK(self):
-            return self.getToken(TyCParser.RBRACK, 0)
-
-        def lhs(self):
-            return self.getTypedRuleContext(TyCParser.LhsContext,0)
-
-
-        def ID(self):
-            return self.getToken(TyCParser.ID, 0)
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_lhs
-
-
-
-
-    def lhs(self):
-
-        localctx = TyCParser.LhsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_lhs)
-        try:
-            self.state = 237
+            self.state = 181
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [25]:
+            if token in [1]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 231
-                self.match(TyCParser.LBRACK)
-                self.state = 232
-                self.expression()
-                self.state = 233
-                self.match(TyCParser.RBRACK)
-                self.state = 234
-                self.lhs()
-                pass
-            elif token in [32]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 236
+                self.state = 169
+                self.match(TyCParser.AUTO)
+                self.state = 170
                 self.match(TyCParser.ID)
+                self.state = 173
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la==25:
+                    self.state = 171
+                    self.match(TyCParser.ASSIGN)
+                    self.state = 172
+                    self.expr()
+
+
+                pass
+            elif token in [7, 10, 12, 44, 45]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 175
+                self.type_spec()
+                self.state = 176
+                self.match(TyCParser.ID)
+                self.state = 179
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if _la==25:
+                    self.state = 177
+                    self.match(TyCParser.ASSIGN)
+                    self.state = 178
+                    self.expr()
+
+
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1689,7 +1064,7 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class If_statementContext(ParserRuleContext):
+    class If_stmtContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1699,47 +1074,56 @@ class TyCParser ( Parser ):
         def IF(self):
             return self.getToken(TyCParser.IF, 0)
 
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
+        def LPAREN(self):
+            return self.getToken(TyCParser.LPAREN, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
 
 
-        def block_statement(self, i:int=None):
+        def RPAREN(self):
+            return self.getToken(TyCParser.RPAREN, 0)
+
+        def statement(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(TyCParser.Block_statementContext)
+                return self.getTypedRuleContexts(TyCParser.StatementContext)
             else:
-                return self.getTypedRuleContext(TyCParser.Block_statementContext,i)
+                return self.getTypedRuleContext(TyCParser.StatementContext,i)
 
 
         def ELSE(self):
             return self.getToken(TyCParser.ELSE, 0)
 
         def getRuleIndex(self):
-            return TyCParser.RULE_if_statement
+            return TyCParser.RULE_if_stmt
 
 
 
 
-    def if_statement(self):
+    def if_stmt(self):
 
-        localctx = TyCParser.If_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 46, self.RULE_if_statement)
-        self._la = 0 # Token type
+        localctx = TyCParser.If_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 24, self.RULE_if_stmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 239
+            self.state = 183
             self.match(TyCParser.IF)
-            self.state = 240
-            self.expression()
-            self.state = 241
-            self.block_statement()
-            self.state = 244
+            self.state = 184
+            self.match(TyCParser.LPAREN)
+            self.state = 185
+            self.expr()
+            self.state = 186
+            self.match(TyCParser.RPAREN)
+            self.state = 187
+            self.statement()
+            self.state = 190
             self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==3:
-                self.state = 242
+            la_ = self._interp.adaptivePredict(self._input,12,self._ctx)
+            if la_ == 1:
+                self.state = 188
                 self.match(TyCParser.ELSE)
-                self.state = 243
-                self.block_statement()
+                self.state = 189
+                self.statement()
 
 
         except RecognitionException as re:
@@ -1751,7 +1135,62 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class For_statementContext(ParserRuleContext):
+    class While_stmtContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def WHILE(self):
+            return self.getToken(TyCParser.WHILE, 0)
+
+        def LPAREN(self):
+            return self.getToken(TyCParser.LPAREN, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
+
+
+        def RPAREN(self):
+            return self.getToken(TyCParser.RPAREN, 0)
+
+        def statement(self):
+            return self.getTypedRuleContext(TyCParser.StatementContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_while_stmt
+
+
+
+
+    def while_stmt(self):
+
+        localctx = TyCParser.While_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_while_stmt)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 192
+            self.match(TyCParser.WHILE)
+            self.state = 193
+            self.match(TyCParser.LPAREN)
+            self.state = 194
+            self.expr()
+            self.state = 195
+            self.match(TyCParser.RPAREN)
+            self.state = 196
+            self.statement()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class For_stmtContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1770,98 +1209,74 @@ class TyCParser ( Parser ):
             else:
                 return self.getToken(TyCParser.SEMI, i)
 
-        def expression(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(TyCParser.ExpressionContext)
-            else:
-                return self.getTypedRuleContext(TyCParser.ExpressionContext,i)
-
-
-        def HASH(self):
-            return self.getToken(TyCParser.HASH, 0)
-
         def RPAREN(self):
             return self.getToken(TyCParser.RPAREN, 0)
 
-        def block_statement(self):
-            return self.getTypedRuleContext(TyCParser.Block_statementContext,0)
+        def statement(self):
+            return self.getTypedRuleContext(TyCParser.StatementContext,0)
 
 
-        def GT(self):
-            return self.getToken(TyCParser.GT, 0)
-
-        def LT(self):
-            return self.getToken(TyCParser.LT, 0)
-
-        def EQ(self):
-            return self.getToken(TyCParser.EQ, 0)
-
-        def declared_statement(self):
-            return self.getTypedRuleContext(TyCParser.Declared_statementContext,0)
+        def for_init(self):
+            return self.getTypedRuleContext(TyCParser.For_initContext,0)
 
 
-        def ID(self):
-            return self.getToken(TyCParser.ID, 0)
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
 
-        def ARROW(self):
-            return self.getToken(TyCParser.ARROW, 0)
+
+        def for_update(self):
+            return self.getTypedRuleContext(TyCParser.For_updateContext,0)
+
 
         def getRuleIndex(self):
-            return TyCParser.RULE_for_statement
+            return TyCParser.RULE_for_stmt
 
 
 
 
-    def for_statement(self):
+    def for_stmt(self):
 
-        localctx = TyCParser.For_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 48, self.RULE_for_statement)
+        localctx = TyCParser.For_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 28, self.RULE_for_stmt)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 246
+            self.state = 198
             self.match(TyCParser.FOR)
-            self.state = 247
+            self.state = 199
             self.match(TyCParser.LPAREN)
-            self.state = 252
+            self.state = 201
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [5, 6, 7]:
-                self.state = 248
-                self.declared_statement()
-                pass
-            elif token in [32]:
-                self.state = 249
-                self.match(TyCParser.ID)
-                self.state = 250
-                self.match(TyCParser.ARROW)
-                self.state = 251
-                self.expression()
-                pass
-            else:
-                raise NoViableAltException(self)
-
-            self.state = 254
-            self.match(TyCParser.SEMI)
-            self.state = 255
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 917504) != 0)):
-                self._errHandler.recoverInline(self)
-            else:
-                self._errHandler.reportMatch(self)
-                self.consume()
-            self.state = 256
-            self.expression()
-            self.state = 257
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278568578) != 0):
+                self.state = 200
+                self.for_init()
+
+
+            self.state = 203
             self.match(TyCParser.SEMI)
-            self.state = 258
-            self.match(TyCParser.HASH)
-            self.state = 259
-            self.expression()
-            self.state = 260
+            self.state = 205
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278563328) != 0):
+                self.state = 204
+                self.expr()
+
+
+            self.state = 207
+            self.match(TyCParser.SEMI)
+            self.state = 209
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278563328) != 0):
+                self.state = 208
+                self.for_update()
+
+
+            self.state = 211
             self.match(TyCParser.RPAREN)
-            self.state = 261
-            self.block_statement()
+            self.state = 212
+            self.statement()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1871,7 +1286,371 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class Continue_statementContext(ParserRuleContext):
+    class For_initContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def var_decl(self):
+            return self.getTypedRuleContext(TyCParser.Var_declContext,0)
+
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_for_init
+
+
+
+
+    def for_init(self):
+
+        localctx = TyCParser.For_initContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 30, self.RULE_for_init)
+        try:
+            self.state = 216
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
+            if la_ == 1:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 214
+                self.var_decl()
+                pass
+
+            elif la_ == 2:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 215
+                self.expr()
+                pass
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class For_updateContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_for_update
+
+
+
+
+    def for_update(self):
+
+        localctx = TyCParser.For_updateContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 32, self.RULE_for_update)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 218
+            self.expr()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Switch_stmtContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def SWITCH(self):
+            return self.getToken(TyCParser.SWITCH, 0)
+
+        def LPAREN(self):
+            return self.getToken(TyCParser.LPAREN, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
+
+
+        def RPAREN(self):
+            return self.getToken(TyCParser.RPAREN, 0)
+
+        def LBRACE(self):
+            return self.getToken(TyCParser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(TyCParser.RBRACE, 0)
+
+        def switch_block_item(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.Switch_block_itemContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.Switch_block_itemContext,i)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_switch_stmt
+
+
+
+
+    def switch_stmt(self):
+
+        localctx = TyCParser.Switch_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 34, self.RULE_switch_stmt)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 220
+            self.match(TyCParser.SWITCH)
+            self.state = 221
+            self.match(TyCParser.LPAREN)
+            self.state = 222
+            self.expr()
+            self.state = 223
+            self.match(TyCParser.RPAREN)
+            self.state = 224
+            self.match(TyCParser.LBRACE)
+            self.state = 228
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==3 or _la==5:
+                self.state = 225
+                self.switch_block_item()
+                self.state = 230
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 231
+            self.match(TyCParser.RBRACE)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Switch_block_itemContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def case_clause(self):
+            return self.getTypedRuleContext(TyCParser.Case_clauseContext,0)
+
+
+        def default_clause(self):
+            return self.getTypedRuleContext(TyCParser.Default_clauseContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_switch_block_item
+
+
+
+
+    def switch_block_item(self):
+
+        localctx = TyCParser.Switch_block_itemContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 36, self.RULE_switch_block_item)
+        try:
+            self.state = 235
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [3]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 233
+                self.case_clause()
+                pass
+            elif token in [5]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 234
+                self.default_clause()
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Case_clauseContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def CASE(self):
+            return self.getToken(TyCParser.CASE, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
+
+
+        def COLON(self):
+            return self.getToken(TyCParser.COLON, 0)
+
+        def statement(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.StatementContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.StatementContext,i)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_case_clause
+
+
+
+
+    def case_clause(self):
+
+        localctx = TyCParser.Case_clauseContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 38, self.RULE_case_clause)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 237
+            self.match(TyCParser.CASE)
+            self.state = 238
+            self.expr()
+            self.state = 239
+            self.match(TyCParser.COLON)
+            self.state = 243
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278653334) != 0):
+                self.state = 240
+                self.statement()
+                self.state = 245
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Default_clauseContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def DEFAULT(self):
+            return self.getToken(TyCParser.DEFAULT, 0)
+
+        def COLON(self):
+            return self.getToken(TyCParser.COLON, 0)
+
+        def statement(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.StatementContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.StatementContext,i)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_default_clause
+
+
+
+
+    def default_clause(self):
+
+        localctx = TyCParser.Default_clauseContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 40, self.RULE_default_clause)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 246
+            self.match(TyCParser.DEFAULT)
+            self.state = 247
+            self.match(TyCParser.COLON)
+            self.state = 251
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278653334) != 0):
+                self.state = 248
+                self.statement()
+                self.state = 253
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Break_stmtContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def BREAK(self):
+            return self.getToken(TyCParser.BREAK, 0)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_break_stmt
+
+
+
+
+    def break_stmt(self):
+
+        localctx = TyCParser.Break_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 42, self.RULE_break_stmt)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 254
+            self.match(TyCParser.BREAK)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Continue_stmtContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1882,18 +1661,18 @@ class TyCParser ( Parser ):
             return self.getToken(TyCParser.CONTINUE, 0)
 
         def getRuleIndex(self):
-            return TyCParser.RULE_continue_statement
+            return TyCParser.RULE_continue_stmt
 
 
 
 
-    def continue_statement(self):
+    def continue_stmt(self):
 
-        localctx = TyCParser.Continue_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 50, self.RULE_continue_statement)
+        localctx = TyCParser.Continue_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 44, self.RULE_continue_stmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 263
+            self.state = 256
             self.match(TyCParser.CONTINUE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1904,41 +1683,7 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class Call_statementContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def function_call(self):
-            return self.getTypedRuleContext(TyCParser.Function_callContext,0)
-
-
-        def getRuleIndex(self):
-            return TyCParser.RULE_call_statement
-
-
-
-
-    def call_statement(self):
-
-        localctx = TyCParser.Call_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 52, self.RULE_call_statement)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 265
-            self.function_call()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Return_statementContext(ParserRuleContext):
+    class Return_stmtContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1948,31 +1693,31 @@ class TyCParser ( Parser ):
         def RETURN(self):
             return self.getToken(TyCParser.RETURN, 0)
 
-        def expression(self):
-            return self.getTypedRuleContext(TyCParser.ExpressionContext,0)
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
 
 
         def getRuleIndex(self):
-            return TyCParser.RULE_return_statement
+            return TyCParser.RULE_return_stmt
 
 
 
 
-    def return_statement(self):
+    def return_stmt(self):
 
-        localctx = TyCParser.Return_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 54, self.RULE_return_statement)
+        localctx = TyCParser.Return_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 46, self.RULE_return_stmt)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 267
+            self.state = 258
             self.match(TyCParser.RETURN)
-            self.state = 269
+            self.state = 260
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 133186491136) != 0):
-                self.state = 268
-                self.expression()
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278563328) != 0):
+                self.state = 259
+                self.expr()
 
 
         except RecognitionException as re:
@@ -1984,7 +1729,926 @@ class TyCParser ( Parser ):
         return localctx
 
 
-    class Block_statementContext(ParserRuleContext):
+    class Expr_stmtContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_expr_stmt
+
+
+
+
+    def expr_stmt(self):
+
+        localctx = TyCParser.Expr_stmtContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 48, self.RULE_expr_stmt)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 262
+            self.expr()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ExprContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def assignment(self):
+            return self.getTypedRuleContext(TyCParser.AssignmentContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_expr
+
+
+
+
+    def expr(self):
+
+        localctx = TyCParser.ExprContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 50, self.RULE_expr)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 264
+            self.assignment()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class AssignmentContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def logical_or(self):
+            return self.getTypedRuleContext(TyCParser.Logical_orContext,0)
+
+
+        def ASSIGN(self):
+            return self.getToken(TyCParser.ASSIGN, 0)
+
+        def assignment(self):
+            return self.getTypedRuleContext(TyCParser.AssignmentContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_assignment
+
+
+
+
+    def assignment(self):
+
+        localctx = TyCParser.AssignmentContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 52, self.RULE_assignment)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 266
+            self.logical_or()
+            self.state = 269
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==25:
+                self.state = 267
+                self.match(TyCParser.ASSIGN)
+                self.state = 268
+                self.assignment()
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Logical_orContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def logical_and(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.Logical_andContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.Logical_andContext,i)
+
+
+        def OR(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.OR)
+            else:
+                return self.getToken(TyCParser.OR, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_logical_or
+
+
+
+
+    def logical_or(self):
+
+        localctx = TyCParser.Logical_orContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 54, self.RULE_logical_or)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 271
+            self.logical_and()
+            self.state = 276
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==24:
+                self.state = 272
+                self.match(TyCParser.OR)
+                self.state = 273
+                self.logical_and()
+                self.state = 278
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Logical_andContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def equality(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.EqualityContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.EqualityContext,i)
+
+
+        def AND(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.AND)
+            else:
+                return self.getToken(TyCParser.AND, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_logical_and
+
+
+
+
+    def logical_and(self):
+
+        localctx = TyCParser.Logical_andContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 56, self.RULE_logical_and)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 279
+            self.equality()
+            self.state = 284
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==23:
+                self.state = 280
+                self.match(TyCParser.AND)
+                self.state = 281
+                self.equality()
+                self.state = 286
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class EqualityContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def relational(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.RelationalContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.RelationalContext,i)
+
+
+        def EQ(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.EQ)
+            else:
+                return self.getToken(TyCParser.EQ, i)
+
+        def NEQ(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.NEQ)
+            else:
+                return self.getToken(TyCParser.NEQ, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_equality
+
+
+
+
+    def equality(self):
+
+        localctx = TyCParser.EqualityContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 58, self.RULE_equality)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 287
+            self.relational()
+            self.state = 292
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==21 or _la==22:
+                self.state = 288
+                _la = self._input.LA(1)
+                if not(_la==21 or _la==22):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 289
+                self.relational()
+                self.state = 294
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class RelationalContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def additive(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.AdditiveContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.AdditiveContext,i)
+
+
+        def LT(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.LT)
+            else:
+                return self.getToken(TyCParser.LT, i)
+
+        def LE(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.LE)
+            else:
+                return self.getToken(TyCParser.LE, i)
+
+        def GT(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.GT)
+            else:
+                return self.getToken(TyCParser.GT, i)
+
+        def GE(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.GE)
+            else:
+                return self.getToken(TyCParser.GE, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_relational
+
+
+
+
+    def relational(self):
+
+        localctx = TyCParser.RelationalContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 60, self.RULE_relational)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 295
+            self.additive()
+            self.state = 300
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 202899456) != 0):
+                self.state = 296
+                _la = self._input.LA(1)
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 202899456) != 0)):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 297
+                self.additive()
+                self.state = 302
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class AdditiveContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def multiplicative(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.MultiplicativeContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.MultiplicativeContext,i)
+
+
+        def ADD(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.ADD)
+            else:
+                return self.getToken(TyCParser.ADD, i)
+
+        def SUB(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.SUB)
+            else:
+                return self.getToken(TyCParser.SUB, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_additive
+
+
+
+
+    def additive(self):
+
+        localctx = TyCParser.AdditiveContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 62, self.RULE_additive)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 303
+            self.multiplicative()
+            self.state = 308
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==28 or _la==29:
+                self.state = 304
+                _la = self._input.LA(1)
+                if not(_la==28 or _la==29):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 305
+                self.multiplicative()
+                self.state = 310
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class MultiplicativeContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def unary(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.UnaryContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.UnaryContext,i)
+
+
+        def MUL(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.MUL)
+            else:
+                return self.getToken(TyCParser.MUL, i)
+
+        def DIV(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.DIV)
+            else:
+                return self.getToken(TyCParser.DIV, i)
+
+        def MOD(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.MOD)
+            else:
+                return self.getToken(TyCParser.MOD, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_multiplicative
+
+
+
+
+    def multiplicative(self):
+
+        localctx = TyCParser.MultiplicativeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 64, self.RULE_multiplicative)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 311
+            self.unary()
+            self.state = 316
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 7516192768) != 0):
+                self.state = 312
+                _la = self._input.LA(1)
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 7516192768) != 0)):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 313
+                self.unary()
+                self.state = 318
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class UnaryContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def unary(self):
+            return self.getTypedRuleContext(TyCParser.UnaryContext,0)
+
+
+        def INC(self):
+            return self.getToken(TyCParser.INC, 0)
+
+        def DEC(self):
+            return self.getToken(TyCParser.DEC, 0)
+
+        def NOT(self):
+            return self.getToken(TyCParser.NOT, 0)
+
+        def ADD(self):
+            return self.getToken(TyCParser.ADD, 0)
+
+        def SUB(self):
+            return self.getToken(TyCParser.SUB, 0)
+
+        def postfix(self):
+            return self.getTypedRuleContext(TyCParser.PostfixContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_unary
+
+
+
+
+    def unary(self):
+
+        localctx = TyCParser.UnaryContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 66, self.RULE_unary)
+        self._la = 0 # Token type
+        try:
+            self.state = 322
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [17, 18, 28, 29, 33]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 319
+                _la = self._input.LA(1)
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 9395634176) != 0)):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 320
+                self.unary()
+                pass
+            elif token in [35, 39, 44, 45, 46, 47, 48]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 321
+                self.postfix()
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class PostfixContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def primary(self):
+            return self.getTypedRuleContext(TyCParser.PrimaryContext,0)
+
+
+        def postfix_part(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.Postfix_partContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.Postfix_partContext,i)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_postfix
+
+
+
+
+    def postfix(self):
+
+        localctx = TyCParser.PostfixContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 68, self.RULE_postfix)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 324
+            self.primary()
+            self.state = 328
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 51540000768) != 0):
+                self.state = 325
+                self.postfix_part()
+                self.state = 330
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Postfix_partContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LPAREN(self):
+            return self.getToken(TyCParser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(TyCParser.RPAREN, 0)
+
+        def arg_list(self):
+            return self.getTypedRuleContext(TyCParser.Arg_listContext,0)
+
+
+        def DOT(self):
+            return self.getToken(TyCParser.DOT, 0)
+
+        def ID(self):
+            return self.getToken(TyCParser.ID, 0)
+
+        def INC(self):
+            return self.getToken(TyCParser.INC, 0)
+
+        def DEC(self):
+            return self.getToken(TyCParser.DEC, 0)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_postfix_part
+
+
+
+
+    def postfix_part(self):
+
+        localctx = TyCParser.Postfix_partContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 70, self.RULE_postfix_part)
+        self._la = 0 # Token type
+        try:
+            self.state = 340
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [35]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 331
+                self.match(TyCParser.LPAREN)
+                self.state = 333
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278563328) != 0):
+                    self.state = 332
+                    self.arg_list()
+
+
+                self.state = 335
+                self.match(TyCParser.RPAREN)
+                pass
+            elif token in [34]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 336
+                self.match(TyCParser.DOT)
+                self.state = 337
+                self.match(TyCParser.ID)
+                pass
+            elif token in [17]:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 338
+                self.match(TyCParser.INC)
+                pass
+            elif token in [18]:
+                self.enterOuterAlt(localctx, 4)
+                self.state = 339
+                self.match(TyCParser.DEC)
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Arg_listContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.ExprContext,i)
+
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.COMMA)
+            else:
+                return self.getToken(TyCParser.COMMA, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_arg_list
+
+
+
+
+    def arg_list(self):
+
+        localctx = TyCParser.Arg_listContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 72, self.RULE_arg_list)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 342
+            self.expr()
+            self.state = 347
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==41:
+                self.state = 343
+                self.match(TyCParser.COMMA)
+                self.state = 344
+                self.expr()
+                self.state = 349
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class PrimaryContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def literal(self):
+            return self.getTypedRuleContext(TyCParser.LiteralContext,0)
+
+
+        def ID(self):
+            return self.getToken(TyCParser.ID, 0)
+
+        def GLOBAL_ID(self):
+            return self.getToken(TyCParser.GLOBAL_ID, 0)
+
+        def LPAREN(self):
+            return self.getToken(TyCParser.LPAREN, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(TyCParser.ExprContext,0)
+
+
+        def RPAREN(self):
+            return self.getToken(TyCParser.RPAREN, 0)
+
+        def struct_literal(self):
+            return self.getTypedRuleContext(TyCParser.Struct_literalContext,0)
+
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_primary
+
+
+
+
+    def primary(self):
+
+        localctx = TyCParser.PrimaryContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 74, self.RULE_primary)
+        try:
+            self.state = 358
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [46, 47, 48]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 350
+                self.literal()
+                pass
+            elif token in [44]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 351
+                self.match(TyCParser.ID)
+                pass
+            elif token in [45]:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 352
+                self.match(TyCParser.GLOBAL_ID)
+                pass
+            elif token in [35]:
+                self.enterOuterAlt(localctx, 4)
+                self.state = 353
+                self.match(TyCParser.LPAREN)
+                self.state = 354
+                self.expr()
+                self.state = 355
+                self.match(TyCParser.RPAREN)
+                pass
+            elif token in [39]:
+                self.enterOuterAlt(localctx, 5)
+                self.state = 357
+                self.struct_literal()
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class LiteralContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def INT_LIT(self):
+            return self.getToken(TyCParser.INT_LIT, 0)
+
+        def FLOAT_LIT(self):
+            return self.getToken(TyCParser.FLOAT_LIT, 0)
+
+        def STRING_LIT(self):
+            return self.getToken(TyCParser.STRING_LIT, 0)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_literal
+
+
+
+
+    def literal(self):
+
+        localctx = TyCParser.LiteralContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 76, self.RULE_literal)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 360
+            _la = self._input.LA(1)
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 492581209243648) != 0)):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Struct_literalContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1997,34 +2661,34 @@ class TyCParser ( Parser ):
         def RBRACE(self):
             return self.getToken(TyCParser.RBRACE, 0)
 
-        def list_statement(self):
-            return self.getTypedRuleContext(TyCParser.List_statementContext,0)
+        def expr_list(self):
+            return self.getTypedRuleContext(TyCParser.Expr_listContext,0)
 
 
         def getRuleIndex(self):
-            return TyCParser.RULE_block_statement
+            return TyCParser.RULE_struct_literal
 
 
 
 
-    def block_statement(self):
+    def struct_literal(self):
 
-        localctx = TyCParser.Block_statementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 56, self.RULE_block_statement)
+        localctx = TyCParser.Struct_literalContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 78, self.RULE_struct_literal)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 271
+            self.state = 362
             self.match(TyCParser.LBRACE)
-            self.state = 273
+            self.state = 364
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 4462751990) != 0):
-                self.state = 272
-                self.list_statement()
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 545951278563328) != 0):
+                self.state = 363
+                self.expr_list()
 
 
-            self.state = 275
+            self.state = 366
             self.match(TyCParser.RBRACE)
         except RecognitionException as re:
             localctx.exception = re
@@ -2035,27 +2699,61 @@ class TyCParser ( Parser ):
         return localctx
 
 
+    class Expr_listContext(ParserRuleContext):
+        __slots__ = 'parser'
 
-    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
-        if self._predicates == None:
-            self._predicates = dict()
-        self._predicates[3] = self.expression2_sempred
-        self._predicates[4] = self.expression3_sempred
-        pred = self._predicates.get(ruleIndex, None)
-        if pred is None:
-            raise Exception("No predicate with index:" + str(ruleIndex))
-        else:
-            return pred(localctx, predIndex)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
 
-    def expression2_sempred(self, localctx:Expression2Context, predIndex:int):
-            if predIndex == 0:
-                return self.precpred(self._ctx, 2)
-         
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TyCParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(TyCParser.ExprContext,i)
 
-    def expression3_sempred(self, localctx:Expression3Context, predIndex:int):
-            if predIndex == 1:
-                return self.precpred(self._ctx, 2)
-         
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(TyCParser.COMMA)
+            else:
+                return self.getToken(TyCParser.COMMA, i)
+
+        def getRuleIndex(self):
+            return TyCParser.RULE_expr_list
+
+
+
+
+    def expr_list(self):
+
+        localctx = TyCParser.Expr_listContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 80, self.RULE_expr_list)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 368
+            self.expr()
+            self.state = 373
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==41:
+                self.state = 369
+                self.match(TyCParser.COMMA)
+                self.state = 370
+                self.expr()
+                self.state = 375
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
 
 
 

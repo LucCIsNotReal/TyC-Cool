@@ -24,8 +24,6 @@ options{
 	language=Python3;
 }
 
-// TODO: Define grammar rules here
-
 //Lexical rules
 // KEYWORDS
 AUTO     : 'auto';
@@ -46,28 +44,30 @@ VOID     : 'void';
 WHILE    : 'while';
 
 // OPERATORS
-PLUS     : '+';
+INC      : '++';
+DEC      : '--';
+LE       : '<=';
+GE       : '>=';
+EQ       : '==';
+NEQ      : '!=';
+AND      : '&&';
+OR       : '||';
+ASSIGN   : '=';
+GT       : '>';
+LT       : '<';
+ADD      : '+';
 SUB      : '-';
 MUL      : '*';
 DIV      : '/';
 MOD      : '%';
-ASSIGN   : '=';
-EQ       : '==';
-NE       : '!=';
-GT       : '>';
-LT       : '<';
-GE       : '>=';
-LE       : '<=';
-AND      : '&&';
-OR       : '||';
 NOT      : '!';
-INC      : '++';
-DEC      : '--';
 DOT      : '.';
 
 // SEPARATOR
 LPAREN   : '(';
 RPAREN   : ')';
+LBRACK   : '[';
+RBRACK   : ']';
 LBRACE   : '{';
 RBRACE   : '}';
 COMMA    : ',';
@@ -75,16 +75,18 @@ SEMI     : ';';
 COLON    : ':';
 
 //IDENTIFIERS
-ID: [A-Za-z_][A-Za-z0-9_]*;
+ID: [A-Za-z_] [A-Za-z0-9_]*;
 GLOBAL_ID: '@' ID;
 
 // LITERAL
-INT_LIT: [1-9] [0-9]* | '0';
-FLOAT_LIT: ([0-9]+ '.' [0-9]* | '.' [0-9]+) ([Ee] [+-]? [0-9]+)? | [0-9]+ [Ee] [+-]? [0-9]+;
-STRING_LIT: '"' STR_CHAR* '"' {self.text = self.text[1:-1]};
-fragment STR_CHAR: ~[\n\\"] | ESC_SEQ;
+FLOAT_LIT: DIGITS '.' DIGITS? EXP? | '.' DIGITS EXP? | DIGITS EXP;
+INT_LIT: DIGITS;
+STRING_LIT: '"' STR_CHAR* '"' {self.text = self.text[1:-1] };
+fragment DIGITS: [0-9]+;
+fragment EXP: [Ee] [+-]? DIGITS;
+fragment STR_CHAR: ~[\r\n\\"] | ESC_SEQ;
 fragment ESC_SEQ: '\\' [bfrnt\\"];
-fragment ESC_ILLEGAL: '\\' ~[bfrnt\\"];
+fragment ESC_ILLEGAL: '\\' ~[bfrnt\\"\r\n];
 
 // COMMENT, WHITE SPACE
 LINE_COMMENT
@@ -99,71 +101,71 @@ WS: [ \t\r\n]+ -> skip;
 // ERROR
 ERROR_CHAR: .;
 ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL {
-    raise IllegalEscape(self.text[1:])
+    raise illegalEscape(self.text[1:])
 };
 UNCLOSE_STRING: '"' STR_CHAR* ('\r\n' | '\n' | EOF) {
     if(len(self.text) >= 2 and self.text[-1] == '\n' and self.text[-2] == '\r'):
-        raise UncloseString(self.text[1:-2])
-    elif(self.text[-1] == '\n'):
-        raise UncloseString(self.text[1:-1])
+        raise uncloseString(self.text[1:-2])
+    elif (self.text[-1] == '\n'):
+        raise uncloseString(self.text[1:-1])
     else:
-        raise UncloseString(self.text[1:])
+        raise uncloseString(self.text[1:])
 };
 
-// EXPRESSIONS - Following operator precedence from specification
-expression: assignment;
+// TODO EXPRESSION AND LITERAL
+program: decl* EOF;
+decl: struct_decl | func_decl;
+struct_decl: STRUCT ID LBRACE member_decl* RBRACE SEMI;
+member_decl: type_spec ID SEMI;
+func_decl: return_type? ID LPAREN param_list? RPAREN block_stmt;
+return_type: type_spec | VOID;
+param_list: param (COMMA param)*;
+param: type_spec ID;
+type_spec: INT | FLOAT | STRING | ID | GLOBAL_ID;
+block_stmt: LBRACE statement* RBRACE;
+
+statement:
+    block_stmt
+    | var_decl SEMI
+    | if_stmt
+    | while_stmt
+    | for_stmt
+    | switch_stmt
+    | break_stmt SEMI
+    | continue_stmt SEMI
+    | return_stmt SEMI
+    | expr_stmt SEMI;
+
+var_decl: AUTO ID (ASSIGN expr)? | type_spec ID (ASSIGN expr)?;
+if_stmt: IF LPAREN expr RPAREN statement (ELSE statement)?;
+while_stmt: WHILE LPAREN expr RPAREN statement;
+for_stmt: FOR LPAREN for_init? SEMI expr? SEMI for_update? RPAREN statement;
+for_init: var_decl | expr;
+for_update: expr;
+switch_stmt: SWITCH LPAREN expr RPAREN LBRACE switch_block_item* RBRACE;
+switch_block_item: case_clause | default_clause;
+case_clause: CASE expr COLON statement*;
+default_clause: DEFAULT COLON statement*;
+
+break_stmt: BREAK;
+continue_stmt: CONTINUE;
+return_stmt: RETURN expr?;
+expr_stmt: expr;
+
+expr: assignment;
 assignment: logical_or (ASSIGN assignment)?;
 logical_or: logical_and (OR logical_and)*;
 logical_and: equality (AND equality)*;
-equality: relational ((EQ | NE) relational)*;
+equality: relational ((EQ | NEQ) relational)*;
 relational: additive ((LT | LE | GT | GE) additive)*;
-additive: multiplicative ((PLUS | SUB) multiplicative)*;
+additive: multiplicative ((ADD | SUB) multiplicative)*;
 multiplicative: unary ((MUL | DIV | MOD) unary)*;
-unary: (NOT | SUB | PLUS | INC | DEC) unary | postfix;
-postfix: primary ((INC | DEC))?;
-primary: ID (DOT ID)* | literal | function_call | LPAREN expression RPAREN;
-function_call: ID LPAREN argument_list? RPAREN;
-argument_list: expression (COMMA expression)*;
-
-// LITERALS
-literal: INT_LIT | FLOAT_LIT | STRING_LIT | struct_init;
-struct_init: LBRACE argument_list? RBRACE;
-
-// PROGRAM STRUCTURE
-program: struct_decl* function* EOF;
-struct_decl: STRUCT ID LBRACE struct_member* RBRACE SEMI;
-struct_member: type_name ID SEMI;
-function: type_name? ID LPAREN param_list? RPAREN LBRACE statement* RBRACE;
-param_list: param (COMMA param)*;
-param: ID COLON type_name;
-type_name: INT | FLOAT | STRING | VOID | AUTO | ID;
-
-// LVALUE - for assignment targets
-lvalue: ID (DOT ID)*;
-
-// STATEMENTS
-list_statement: statement+;
-statement: var_statement SEMI
-         | if_stmt
-         | while_stmt
-         | for_stmt
-         | switch_stmt
-         | break_stmt SEMI
-         | continue_stmt SEMI
-         | block_stmt
-         | expr_stmt SEMI
-         | return_stmt SEMI;
-
-var_statement: type_name ID (ASSIGN expression)?;
-if_stmt: IF LPAREN expression RPAREN statement (ELSE statement)?;
-while_stmt: WHILE LPAREN expression RPAREN statement;
-for_stmt: FOR LPAREN var_statement? SEMI expression? SEMI expression? RPAREN statement;
-switch_stmt: SWITCH LPAREN expression RPAREN LBRACE switch_case* RBRACE;
-switch_case: CASE INT_LIT COLON statement*
-           | DEFAULT COLON statement*;
-break_stmt: BREAK;
-continue_stmt: CONTINUE;
-return_stmt: RETURN expression?;
-expr_stmt: expression;
-block_stmt: LBRACE statement* RBRACE;
+unary: (INC | DEC | NOT | ADD | SUB) unary | postfix;
+postfix: primary postfix_part*;
+postfix_part: LPAREN arg_list? RPAREN | DOT ID | INC | DEC;
+arg_list: expr (COMMA expr)*;
+primary: literal | ID | GLOBAL_ID | LPAREN expr RPAREN | struct_literal;
+literal: INT_LIT | FLOAT_LIT | STRING_LIT;
+struct_literal: LBRACE expr_list? RBRACE;
+expr_list: expr (COMMA expr)*;
 
