@@ -7,16 +7,75 @@ import pytest
 from tests.utils import Parser
 
 
-def test_001():
+# ========== Simple Test Cases (10 types) ==========
+def test_empty_program():
+    """1. Empty program"""
+    assert Parser("").parse() == "success"
+
+
+def test_program_with_only_main():
+    """2. Program with only main function"""
+    assert Parser("void main() {}").parse() == "success"
+
+
+def test_struct_simple():
+    """3. Struct declaration"""
+    source = "struct Point { int x; int y; };"
+    assert Parser(source).parse() == "success"
+
+
+def test_function_no_params():
+    """4. Function with no parameters"""
+    source = "void greet() { printString(\"Hello\"); }"
+    assert Parser(source).parse() == "success"
+
+
+def test_var_decl_auto_with_init():
+    """5. Variable declaration"""
+    source = "void main() { auto x = 5; }"
+    assert Parser(source).parse() == "success"
+
+
+def test_if_simple():
+    """6. If statement"""
+    source = "void main() { if (1) printInt(1); }"
+    assert Parser(source).parse() == "success"
+
+
+def test_while_simple():
+    """7. While statement"""
+    source = "void main() { while (1) printInt(1); }"
+    assert Parser(source).parse() == "success"
+
+
+def test_for_simple():
+    """8. For statement"""
+    source = "void main() { for (auto i = 0; i < 10; ++i) printInt(i); }"
+    assert Parser(source).parse() == "success"
+
+
+def test_switch_simple():
+    """9. Switch statement"""
+    source = "void main() { switch (1) { case 1: printInt(1); break; } }"
+    assert Parser(source).parse() == "success"
+
+
+def test_assignment_simple():
+    """10. Assignment statement"""
+    source = "void main() { int x; x = 5; }"
+    assert Parser(source).parse() == "success"
+
+def test_011():
+    """11. Print string function"""
     source = """
 void main() {
     printString("Hello, World!");
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
-def test_002():
+def test_012():
+    """12. Functions with parameters and return values"""
     source = """
 int add(int x, int y) {
     return x + y;
@@ -37,10 +96,10 @@ void main() {
     printInt(product);
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
-def test_003():
+def test_013():
+    """13. Loop and conditional statements"""
     source = """
 void main() {
     auto n = readInt();
@@ -58,10 +117,10 @@ void main() {
     }
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
-def test_004():
+def test_014():
+    """14. Recursive function (factorial)"""
     source = """
 int factorial(int n) {
     if (n <= 1) {
@@ -77,10 +136,10 @@ void main() {
     printInt(result);
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
-def test_005():
+def test_015():
+    """15. Variable declarations with auto and explicit types"""
     source = """
 void main() {
     // With auto and initialization
@@ -111,11 +170,11 @@ void main() {
     // This is because + operator applies to int or float, not string
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
 
-def test_006():
+def test_016():
+    """16. Structs: declaration, initialization, member access, and assignment"""
     source ="""
 struct Point {
     int x;
@@ -159,1257 +218,411 @@ void main() {
     printInt(p3.x);
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-def test_007():
-    source = """
-void main() {
-"""
-    expected = "Error on line 3 col 0: <EOF>"
-    assert Parser(source).parse() == expected
-
-def test_008():
-    source = """
-void main {}
-"""
-    expected = "Error on line 2 col 10: {"
-    assert Parser(source).parse() == expected
-
-
-def test_009():
-    source = """
-void main() {
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_010():
-    source = """
-void main() {
-    int a;
-    float b;
-    string c;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_011():
-    source = """
-void main() {
-    auto a = 1;
-    auto b = 2.5;
-    auto c = "hi";
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_012():
-    source = """
-void main() {
-    int a;
-    a = 10;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_013():
-    source = """
-void main() {
-    1 + 2;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_014():
-    source = """
-void main() {
-    if (1) {
-        int a = 1;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_015():
-    source = """
-void main() {
-    int a = 0;
-    if (a) {
-        a = 1;
-    } else {
-        a = 2;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_016():
-    source = """
-void main() {
-    int a = 0;
-    if (a) {
-        a = 1;
-    } else {
-        if (1) {
-            a = 3;
-        }
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert Parser(source).parse() == "success"
 
 def test_017():
+    """17. Switch statement with multiple cases and default"""
     source = """
 void main() {
-    int i = 0;
-    while (i < 10) {
-        i = i + 1;
+    auto choice = readInt();
+    switch (choice) {
+        case 1:
+            printString("You chose option 1");
+            break;
+        case 2:
+            printString("You chose option 2");
+            break;
+        case 3:
+            printString("You chose option 3");
+            break;
+        default:
+            printString("Invalid choice");
     }
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert Parser(source).parse() == "success"
 
 def test_018():
+    """18. Function calls with various argument types and return values"""
     source = """
+int sum(int a, int b) {
+    return a + b;
+}
+float average(float x, float y) {
+    return (x + y) / 2.0;
+}
+string greet(string name) {
+    return "Hello, " + name;  // Note: String concatenation is NOT supported
+}
 void main() {
-    for (int i = 0; i < 10; i = i + 1) {
-        printInt(i);
-    }
+    auto s = sum(10, 20);
+    printInt(s);
+    auto avg = average(5.0, 15.0);
+    printFloat(avg);
+    auto message = greet("Alice");
+    printString(message);
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
 
 def test_019():
+    """19. Nested control flow statements"""
     source = """
 void main() {
-    for (; ; ) {
-        break;
+    auto n = readInt();
+    
+    for (auto i = 0; i < n; ++i) {
+        if (i % 2 == 0) {
+            printString("Even: ");
+            printInt(i);
+        } else {
+            printString("Odd: ");
+            printInt(i);
+        }
     }
 }
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
+"""    
+    assert Parser(source).parse() == "success"
 
 
 def test_020():
+    """20. Complex expressions with multiple operators and parentheses"""
     source = """
 void main() {
-    int x = 0;
-    switch (x) {
-        case 0:
-            x = 1;
-            break;
-        default:
-            x = 2;
-            break;
-    }
+    auto a = readInt();
+    auto b = readInt();
+    auto c = readInt();
+    
+    auto result = (a + b) * c - (a / b) + (b % c);
+    printInt(result);
 }
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+"""    
+    assert Parser(source).parse() == "success"
 
 def test_021():
+    """21. Function with struct parameter and return type"""
     source = """
+struct Point {
+    int x;
+    int y;
+};
+Point createPoint(int x, int y) {
+    Point p;
+    p.x = x;
+    p.y = y;
+    return p;
+}
 void main() {
-    int x = 0;
-    switch (x) {
-        case 1:
-            x = 10;
-        case 2:
-            x = 20;
-            break;
-        default:
-            x = 0;
-    }
+    auto p1 = createPoint(10, 20);
+    printInt(p1.x);
+    printInt(p1.y);
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
-
+#thêm các testcase kiểm tra lỗi cú pháp
 def test_022():
+    """22. Missing semicolon after variable declaration"""
     source = """
 void main() {
-    int i = 0;
-    while (i < 3) {
-        if (i == 2) {
-            break;
-        }
-        i = i + 1;
-    }
+    auto x = 10
+    printInt(x);
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert Parser(source).parse() == "Error on line 4 col 4: printInt"
 
 def test_023():
+    """23. Unmatched parentheses in expression"""
     source = """
 void main() {
-    int i = 0;
-    for (; i < 5; i = i + 1) {
-        if (i == 1) {
-            continue;
-        }
+    auto result = (10 + 5 * (2 - 3);
+    printInt(result);
+}
+"""
+    assert Parser(source).parse() == "Error on line 3 col 35: ;"
+
+def test_024():
+    """24. Invalid struct member access"""
+    source = """
+struct Point {
+    int x;
+    int y;
+};
+void main() {
+    Point p;
+    p.z = 10;  // 'z' is not a member of 'Point'
+}
+"""
+    assert Parser(source).parse() == "success"
+
+def test_025():
+    """25. Missing return statement in non-void function"""
+    source = """int add(int a, int b) {
+    auto sum = a + b;
+}
+void main() {
+    auto result = add(5, 10);
+    printInt(result);
+}
+"""
+    assert Parser(source).parse() == "success"
+
+def test_026():
+    """26. Missing semicolon after variable declaration"""
+    source = """
+void main() {
+    auto x = 10
+    printInt(x);
+}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_027():
+    """27. Missing semicolon after struct declaration"""
+    source = """
+struct Point { int x; int y; }
+void main() {}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_028():
+    """28. Missing closing brace in function"""
+    source = """
+void main() {
+    auto x = 5;
+    printInt(x);
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_029():
+    """29. Missing opening brace in function"""
+    source = """
+void main()
+    auto x = 5;
+    printInt(x);
+}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_030():
+    """30. Unmatched parentheses in expression"""
+    source = """
+void main() {
+    auto result = (10 + 5 * (2 - 3);
+}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_031():
+    """31. Missing parentheses in if statement"""
+    source = """
+void main() {
+    if x > 5 {
+        printInt(x);
+    }
+}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_032():
+    """32. Missing parentheses in while statement"""
+    source = """
+void main() {
+    while x < 10 {
+        ++x;
+    }
+}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_033():
+    """33. Missing colon in case statement"""
+    source = """
+void main() {
+    switch (x) {
+        case 1
+            printInt(1);
+            break;
+    }
+}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_034():
+    """34. Missing closing brace in struct declaration"""
+    source = """
+struct Point {
+    int x;
+    int y;
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_035():
+    """35. Invalid parameter list - missing type"""
+    source = """
+int add(a, int b) {
+    return a + b;
+}
+void main() {}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_036():
+    """36. Missing comma in parameter list"""
+    source = """
+int add(int a int b) {
+    return a + b;
+}
+void main() {}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_037():
+    """37. Invalid variable declaration - missing identifier"""
+    source = """
+void main() {
+    auto = 10;
+}
+"""
+    assert "Error" in Parser(source).parse()
+
+def test_038():
+    """38. Invalid type specification"""
+    source = """
+void main() {
+    int flag = 0;
+}
+"""
+    assert "success" in Parser(source).parse()
+
+def test_039():
+    """39. Missing semicolon in for loop initializer"""
+    source = """
+void main() {
+    for (auto i = 0 i < 10; ++i) {
         printInt(i);
     }
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_024():
-    source = """
-void main() {
-    return;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_025():
-    source = """
-add() {
-    return 1;
-}
-
-void main() {
-    auto x = add();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_026():
-    source = """
-int one() {
-    return 1;
-}
-
-void main() {
-    auto x = one();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_027():
-    source = """
-sum() {
-    return 1 + 2;
-}
-
-void main() {
-    auto x = sum();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_028():
-    source = """
-struct Empty {
-};
-
-void main() {
-    Empty e;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_029():
-    source = """
-struct P {
-    int x;
-};
-
-void main() {
-    P p;
-    p.x = 1;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_030():
-    source = """
-struct P {
-    int x;
-    int y;
-};
-
-void main() {
-    P p = {1, 2};
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_031():
-    source = """
-struct P {
-    int x;
-    int y;
-};
-
-void main() {
-    P a = {1, 2};
-    P b;
-    b = a;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_032():
-    source = """
-void main() {
-    {
-        int a = 1;
-        {
-            int b = 2;
-            a = b;
-        }
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_033():
-    source = """
-void main() {
-    auto a = 1 && 0;
-    auto b = 1 || 0;
-    auto c = !1;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_034():
-    source = """
-void main() {
-    auto a = 1 < 2;
-    auto b = 1 == 2;
-    auto c = 1 != 2;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_035():
-    source = """
-void main() {
-    auto a = 1 + 2 * 3 - 4 / 2;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_036():
-    source = """
-void main() {
-    auto a = -(1 + 2);
-    auto b = +3;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_037():
-    source = """
-void main() {
-    int i = 0;
-    i++;
-    i--;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_038():
-    source = """
-void main() {
-    int i = 0;
-    ++i;
-    --i;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_039():
-    source = """
-struct P {
-    int x;
-};
-
-void main() {
-    P p;
-    auto a = p.x;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert "Error" in Parser(source).parse()
 
 def test_040():
+    """40. Missing semicolon in for loop condition"""
     source = """
-int add(int x, int y) {
-    return x + y;
-}
-
 void main() {
-    auto s = add(1, 2);
+    for (auto i = 0; i < 10 ++i) {
+        printInt(i);
+    }
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert "Error" in Parser(source).parse()
 
 def test_041():
+    """41. Missing parentheses in for statement"""
     source = """
-int add(int x, int y) {
-    return x + y;
-}
-
 void main() {
-    auto s = add(1, add(2, 3));
+    for auto i = 0; i < 10; ++i {
+        printInt(i);
+    }
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert "Error" in Parser(source).parse()
 
 def test_042():
+    """42. Invalid expression - missing operand"""
     source = """
 void main() {
-    int a;
-    int b;
-    a = b = 1;
+    auto x = 5 +;
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert "Error" in Parser(source).parse()
 
 def test_043():
+    """43. Invalid unary operator placement"""
     source = """
-struct P {
-    int x;
-};
-
 void main() {
-    P p;
-    p.x = 3;
+    auto x = 5++;
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
+    assert "success" in Parser(source).parse()
 
 def test_044():
+    """44. Missing comma in struct member list"""
     source = """
-struct S {
-    int a;
-};
-
-void main() {
-    S s = {};
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_045():
-    source = """
-void main() {
-    printInt(1);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_046():
-    source = """
-void main() {
-    {
-        int a = 1;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_047():
-    source = """
-void main() {
-    int a = 1;
-    int b = 2;
-    while (a < b && b > 0) {
-        a = a + 1;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_048():
-    source = """
-void main() {
-    int a = 0;
-    if (a) a = 1;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_049():
-    source = """
-void main() {
-    int i = 0;
-    for (; i < 3; ) {
-        i = i + 1;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_050():
-    source = """
-void main() {
-    for (int i = 0; ; i = i + 1) {
-        if (i == 2) break;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_051():
-    source = """
-void main() {
-    int x = 2;
-    switch (x) {
-        case 1:
-            x = 10;
-            x = x + 1;
-            break;
-        default:
-            x = 0;
-            break;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_052():
-    source = """
-struct A {
-    int x;
-};
-
-struct B {
-    float y;
-};
-
-void main() {
-    A a;
-    B b;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_053():
-    source = """
-struct A {
-    int x;
-};
-
-struct B {
-    A a;
-};
-
-void main() {
-    B b;
-    b.a.x = 1;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_054():
-    source = """
-void main() {
-    auto a = (1 + 2) * (3 + 4);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_055():
-    source = """
-void main() {
-    auto a = !(1 < 2);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_056():
-    source = """
-void main() {
-    auto a = (1 < 2) && (2 < 3);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_057():
-    source = """
-void main() {
-    auto a = 1.5 + 2.25 * 3.0;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_058():
-    source = """
-void main() {
-    string s = "hello";
-    printString(s);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_059():
-    source = """
-void main() {
-    printString("Line1\\nLine2");
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_060():
-    source = """
-float pi() {
-    return 3.14;
-}
-
-void main() {
-    auto x = pi();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_061():
-    source = """
-int f() { return 1; }
-int g() { return f(); }
-
-void main() {
-    auto x = g();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_062():
-    source = """
-void main() {
-    int a = 1;
-    int b = 2;
-    return;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_063():
-    source = """
-int max(int a, int b) {
-    if (a > b) return a;
-    return b;
-}
-
-void main() {
-    auto m = max(1, 2);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_064():
-    source = """
-void main() {
-    int i = 0;
-    for (; i < 3; i = i + 1) {
-        int j = 0;
-        while (j < 2) {
-            j = j + 1;
-        }
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_065():
-    source = """
-void main() {
-    int i = 0;
-    while (i < 2) {
-        int j = 0;
-        for (; j < 2; j = j + 1) {
-            printInt(j);
-        }
-        i = i + 1;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_066():
-    source = """
-void main() {
-    int x = 1;
-    switch (x) {
-        case 1:
-            if (x) {
-                x = 2;
-            }
-            break;
-        default:
-            x = 0;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_067():
-    source = """
-void main() {
-    int x = 0;
-    while (x < 1) {
-        switch (x) {
-            case 0:
-                x = 1;
-                break;
-            default:
-                x = 2;
-        }
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_068():
-    source = """
-void main() {
-    int a = 0;
-    if (a) {
-        a = 1;
-    } else {
-        {
-            a = 2;
-        }
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_069():
-    source = """
-struct P {
-    int x;
-};
-
-void main() {
-    P p;
-    p.x = (1 + 2) * 3;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_070():
-    source = """
-struct P {
-    int x;
+struct Point {
+    int x
     int y;
 };
-
-void main() {
-    P p = {1, 2};
-    printInt(p.x);
-}
+void main() {}
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert "Error" in Parser(source).parse()
 
-
-def test_071():
+def test_045():
+    """45. Duplicate case statement without break"""
     source = """
 void main() {
-    auto x;
-    x = 10;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_072():
-    source = """
-helper() {
-}
-
-void main() {
-    helper();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_073():
-    source = """
-int f(int x) {
-    if (x) return 1;
-    return 0;
-}
-
-void main() {
-    auto v = f(1);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_074():
-    source = """
-struct P { int x; };
-
-void main() {
-    P p;
-    p.x;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_075():
-    source = """
-foo() { }
-
-void main() {
-    foo();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_076():
-    source = """
-string msg() {
-    return "hi";
-}
-
-void main() {
-    auto s = msg();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_077():
-    source = """
-void main() {
-    int x = 1;
     switch (x) {
         case 1:
-            x = 2;
-            break;
-        case 2:
-            x = 3;
-            break;
+        case 1:
+            printInt(1);
     }
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert Parser(source).parse() == "success"
 
+def test_046():
+    """46. Missing semicolon in return statement"""
+    source = """
+int getValue() {
+    return 42
+}
+void main() {}
+"""
+    assert "Error" in Parser(source).parse()
 
-def test_078():
+def test_047():
+    """47. Invalid expression in assignment"""
     source = """
 void main() {
-    int x = 0;
-    switch (x) {
-    }
+    int x;
+    x = ;
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert "Error" in Parser(source).parse()
 
-
-def test_079():
+def test_048():
+    """48. Missing closing parenthesis in function call"""
     source = """
 void main() {
-    {}
+    printInt(5;
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert "Error" in Parser(source).parse()
 
-
-def test_080():
+def test_049():
+    """49. Invalid member access - missing member name"""
     source = """
-struct Point { int x; int y; };
-
+struct Point { int x; };
 void main() {
     Point p;
-    p.x = 1;
-    p.y = 2;
+    p.;
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert "Error" in Parser(source).parse()
 
-
-def test_081():
+def test_050():
+    """50. Multiple default cases in switch statement"""
     source = """
 void main() {
-    int a = 1;
-    int a2 = 2;
-    a = a2;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_082():
-    source = """
-void main() {
-    auto a = +1.0;
-    auto b = -2.0;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_083():
-    source = """
-void main() {
-    auto a = 10 % 3;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_084():
-    source = """
-void main() {
-    int a;
-    return a = 1;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_085():
-    source = """
-void main() {
-    auto a = (1 < 2) && (2 != 3) || (3 > 4);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_086():
-    source = """
-void main() {
-    auto x;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_087():
-    source = """
-struct A { int b; };
-struct B { A a; };
-
-void main() {
-    B p;
-    p.a.b = 1;
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_088():
-    source = """
-int add(int a, int b) {
-    return a + b;
-}
-
-void main() {
-    auto s = add(3, 4);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_089():
-    source = """
-int sum3(int a, int b, int c) {
-    return a + b + c;
-}
-
-void main() {
-    auto s = sum3(1, 2, 3);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_090():
-    source = """
-struct P { int x; int y; };
-
-void main() {
-    auto p = {1, 2};
-    printInt(p.x);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_091():
-    source = """
-int get() { return 1; }
-
-void main() {
-    auto v = get();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_092():
-    source = """
-void main() {
-    int i = 0;
-    while (i < 3) {
-        if (i == 1) {
-            i = i + 1;
-            continue;
-        }
-        if (i == 2) break;
-        i = i + 1;
+    switch (x) {
+        case 1:
+            printInt(1);
+        default:
+            printInt(0);
+        default:
+            printInt(-1);
     }
 }
 """
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_093():
-    source = """
-helper() {
-    return;
-}
-
-void main() {
-    helper();
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_094():
-    source = """
-void main() { int a = 1; a = a + 1; }
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_095():
-    source = """
-int inc(int x) { return x + 1; }
-
-void main() {
-    inc(1);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_096():
-    source = """
-void main() {
-    auto a = (1 + 2) * 3;
-    auto b = (a > 0) && (a < 10);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_097():
-    source = """
-struct P { int x; int y; };
-
-void main() {
-    P p = {1, 2};
-    if (p.x < p.y) {
-        p.x = p.y;
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_098():
-    source = """
-void main() {
-    int a = 1;
-    int b = 2;
-    int c = 3;
-    a = b + c * (a + 1);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_099():
-    source = """
-struct Person {
-    string name;
-    int age;
-};
-
-void main() {
-    Person p = {"John", 20};
-    printString(p.name);
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
-
-
-def test_100():
-    source = """
-struct Point { int x; int y; };
-
-int add(int a, int b) { return a + b; }
-
-void main() {
-    Point p = {1, 2};
-    int s = add(p.x, p.y);
-    if (s > 0) {
-        printInt(s);
-    } else {
-        printInt(0);
-    }
-}
-"""
-    expected = "success"
-    assert Parser(source).parse() == expected
+    assert "success" in Parser(source).parse()

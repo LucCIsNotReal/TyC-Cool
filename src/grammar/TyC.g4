@@ -66,8 +66,6 @@ DOT      : '.';
 // SEPARATOR
 LPAREN   : '(';
 RPAREN   : ')';
-LBRACK   : '[';
-RBRACK   : ']';
 LBRACE   : '{';
 RBRACE   : '}';
 COMMA    : ',';
@@ -76,17 +74,30 @@ COLON    : ':';
 
 //IDENTIFIERS
 ID: [A-Za-z_] [A-Za-z0-9_]*;
-GLOBAL_ID: '@' ID;
 
 // LITERAL
 FLOAT_LIT: DIGITS '.' DIGITS? EXP? | '.' DIGITS EXP? | DIGITS EXP;
 INT_LIT: DIGITS;
-STRING_LIT: '"' STR_CHAR* '"' {self.text = self.text[1:-1] };
+
+// STRING LITERAL AND ERROR DETECTION
 fragment DIGITS: [0-9]+;
 fragment EXP: [Ee] [+-]? DIGITS;
 fragment STR_CHAR: ~[\r\n\\"] | ESC_SEQ;
 fragment ESC_SEQ: '\\' [bfrnt\\"];
 fragment ESC_ILLEGAL: '\\' ~[bfrnt\\"\r\n];
+
+ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL {
+    self.text = self.text[1:]
+};
+UNCLOSE_STRING: '"' STR_CHAR* ('\r\n' | '\n' | EOF) {
+    if(len(self.text) >= 2 and self.text[-1] == '\n' and self.text[-2] == '\r'):
+        self.text = self.text[1:-2]
+    elif (self.text[-1] == '\n'):
+        self.text = self.text[1:-1]
+    else:
+        self.text = self.text[1:]
+};
+STRING_LIT: '"' STR_CHAR* '"' {self.text = self.text[1:-1] };
 
 // COMMENT, WHITE SPACE
 LINE_COMMENT
@@ -98,19 +109,7 @@ BLOCK_COMMENT
     ;
 WS: [ \t\r\n]+ -> skip;
 
-// ERROR
 ERROR_CHAR: .;
-ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL {
-    raise illegalEscape(self.text[1:])
-};
-UNCLOSE_STRING: '"' STR_CHAR* ('\r\n' | '\n' | EOF) {
-    if(len(self.text) >= 2 and self.text[-1] == '\n' and self.text[-2] == '\r'):
-        raise uncloseString(self.text[1:-2])
-    elif (self.text[-1] == '\n'):
-        raise uncloseString(self.text[1:-1])
-    else:
-        raise uncloseString(self.text[1:])
-};
 
 // TODO EXPRESSION AND LITERAL
 program: decl* EOF;
@@ -121,7 +120,7 @@ func_decl: return_type? ID LPAREN param_list? RPAREN block_stmt;
 return_type: type_spec | VOID;
 param_list: param (COMMA param)*;
 param: type_spec ID;
-type_spec: INT | FLOAT | STRING | ID | GLOBAL_ID;
+type_spec: INT | FLOAT | STRING | ID;
 block_stmt: LBRACE statement* RBRACE;
 
 statement:
@@ -164,7 +163,7 @@ unary: (INC | DEC | NOT | ADD | SUB) unary | postfix;
 postfix: primary postfix_part*;
 postfix_part: LPAREN arg_list? RPAREN | DOT ID | INC | DEC;
 arg_list: expr (COMMA expr)*;
-primary: literal | ID | GLOBAL_ID | LPAREN expr RPAREN | struct_literal;
+primary: literal | ID | LPAREN expr RPAREN | struct_literal;
 literal: INT_LIT | FLOAT_LIT | STRING_LIT;
 struct_literal: LBRACE expr_list? RBRACE;
 expr_list: expr (COMMA expr)*;

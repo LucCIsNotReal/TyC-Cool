@@ -7,544 +7,504 @@ import pytest
 from tests.utils import Tokenizer
 
 
-def test_001():
-    source = """\t\r\n
-    /* 123 // nothing here */
-    // OKE
-"""
-    expected = "EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+# ========== Simple Test Cases (10 types) ==========
+def test_keyword_auto():
+    """1. Keyword"""
+    tokenizer = Tokenizer("auto")
+    assert tokenizer.get_tokens_as_string() == "auto,<EOF>"
 
-def test_002():
-    source = "@"
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Error Token @"
 
-def test_003():
-    source = "auto auto1"
-    expected = "auto,auto1,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+def test_operator_assign():
+    """2. Operator"""
+    tokenizer = Tokenizer("=")
+    assert tokenizer.get_tokens_as_string() == "=,<EOF>"
 
-def test_004():
-    source = "+ ++"
-    expected = "+,++,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
 
-def test_005():
-    source = "baobao123"
-    expected = "baobao123,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+def test_separator_semi():
+    """3. Separator"""
+    tokenizer = Tokenizer(";")
+    assert tokenizer.get_tokens_as_string() == ";,<EOF>"
 
-def test_006():
-    source = "0   100   255   2500   -45"
-    expected = "0,100,255,2500,-45,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
 
-def test_007():
-    source = "0.0   3.14   -2.5   1.23e4   5.67E-2   1.   .5"
-    expected = "0.0,3.14,-2.5,1.23e4,5.67E-2,1.,.5,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+def test_integer_single_digit():
+    """4. Integer literal"""
+    tokenizer = Tokenizer("5")
+    assert tokenizer.get_tokens_as_string() == "5,<EOF>"
 
-def test_008():
-    source = """
-    "This is a string containing tab \\t"
-    "He asked me: \\"Where is John?\\""
-"""
-    expected = "This is a string containing tab \\t,He asked me: \\\"Where is John?\\\",EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
 
-def test_009():
-    source = """
-    "This is a string \n containing tab \\t"
-"""
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Unclosed String: This is a string \n"
-    
-def test_010():
-    source = """
-    "This is a string \\z containing tab \\t"
-"""
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Illegal Escape In String: This is a string \\z"
+def test_float_decimal():
+    """5. Float literal"""
+    tokenizer = Tokenizer("3.14")
+    assert tokenizer.get_tokens_as_string() == "3.14,<EOF>"
+
+
+def test_string_simple():
+    """6. String literal"""
+    tokenizer = Tokenizer('"hello"')
+    assert tokenizer.get_tokens_as_string() == "hello,<EOF>"
+
+
+def test_identifier_simple():
+    """7. Identifier"""
+    tokenizer = Tokenizer("x")
+    assert tokenizer.get_tokens_as_string() == "x,<EOF>"
+
+
+def test_line_comment():
+    """8. Line comment"""
+    tokenizer = Tokenizer("// This is a comment")
+    assert tokenizer.get_tokens_as_string() == "<EOF>"
+
+
+def test_integer_in_expression():
+    """9. Mixed: integers and operator"""
+    tokenizer = Tokenizer("5+10")
+    assert tokenizer.get_tokens_as_string() == "5,+,10,<EOF>"
+
+
+def test_complex_expression():
+    """10. Complex: variable declaration"""
+    tokenizer = Tokenizer("auto x = 5 + 3 * 2;")
+    assert tokenizer.get_tokens_as_string() == "auto,x,=,5,+,3,*,2,;,<EOF>"
+
+# ================================================
 
 def test_011():
-    source = "auto x = 5 + 3 * 2;"
-    expected = "auto,x,=,5,+,3,*,2,;,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """11. String with escape sequences"""
+    tokenizer = Tokenizer(r'"Hello\nWorld\t!"')
+    assert tokenizer.get_tokens_as_string() == r'Hello\nWorld\t!,<EOF>'
 
 def test_012():
-    source = "auto"
-    expected = "auto,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """12. Float literals with exponent"""
+    tokenizer = Tokenizer("1.5e10 2E-3 .75 4.")
+    assert tokenizer.get_tokens_as_string() == "1.5e10,2E-3,.75,4.,<EOF>"
 
 def test_013():
-    source = "break"
-    expected = "break,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """13. Unclosed string error"""
+    tokenizer = Tokenizer('"This is unclosed string')
+    assert tokenizer.get_tokens_as_string() == "Unclosed String: This is unclosed string"
 
 def test_014():
-    source = "case"
-    expected = "case,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """14. Illegal escape sequence error"""
+    tokenizer = Tokenizer(r'"Illegal escape: \x"')
+    assert tokenizer.get_tokens_as_string() == r'Illegal Escape In String: Illegal escape: \x'
 
 def test_015():
-    source = "continue"
-    expected = "continue,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """15. Error character"""
+    tokenizer = Tokenizer("@")
+    assert tokenizer.get_tokens_as_string() == "Error Token @"
 
 def test_016():
-    source = "default"
-    expected = "default,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """16. Unclosed string with newline"""
+    tokenizer = Tokenizer('"This string has no end\n next_line = 1;')
+    assert tokenizer.get_tokens_as_string() == "Unclosed String: This string has no end"
 
 def test_017():
-    source = "else"
-    expected = "else,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """17. Illegal escape with newline"""
+    tokenizer = Tokenizer(r'"This string has illegal escape \q\n')
+    assert tokenizer.get_tokens_as_string() == r'Illegal Escape In String: This string has illegal escape \q'
 
 def test_018():
-    source = "float"
-    expected = "float,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """18. Illegal escape at end of string"""
+    tokenizer = Tokenizer(r'"Ends with illegal escape \z"')
+    assert tokenizer.get_tokens_as_string() == r'Illegal Escape In String: Ends with illegal escape \z'
 
 def test_019():
-    source = "for"
-    expected = "for,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """19. Valid string with multiple escape sequences"""
+    tokenizer = Tokenizer(r'"Line1\nLine2\tTabbed\\Backslash\""')
+    assert tokenizer.get_tokens_as_string() == r'Line1\nLine2\tTabbed\\Backslash\",<EOF>'
 
 def test_020():
-    source = "if"
-    expected = "if,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """20. Mixed valid and invalid tokens"""
+    tokenizer = Tokenizer('auto x = 10; @ "Bad escape: \\y"')
+    assert tokenizer.get_tokens_as_string() == "auto,x,=,10,;,Error Token @"
 
 def test_021():
-    source = "int"
-    expected = "int,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """21. Multiple unclosed strings"""
+    tokenizer = Tokenizer('"First unclosed string\n"Second unclosed string\n')
+    assert tokenizer.get_tokens_as_string() == "Unclosed String: First unclosed string"
 
 def test_022():
-    source = "return"
-    expected = "return,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """22. Error character in expression"""
+    tokenizer = Tokenizer("x, y = 5, @;")
+    assert tokenizer.get_tokens_as_string() == "x,,,y,=,5,,,Error Token @"
 
 def test_023():
-    source = "string"
-    expected = "string,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """23. Keywords and identifiers"""
+    tokenizer = Tokenizer("auto var1 = readInt();")
+    assert tokenizer.get_tokens_as_string() == "auto,var1,=,readInt,(,),;,<EOF>"
 
 def test_024():
-    source = "struct"
-    expected = "struct,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """24. Keywords with similar prefixes"""
+    tokenizer = Tokenizer("auto aut autoo")
+    assert tokenizer.get_tokens_as_string() == "auto,aut,autoo,<EOF>"
 
 def test_025():
-    source = "switch"
-    expected = "switch,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """25. Keywords in comments"""
+    tokenizer = Tokenizer("// auto var1 = readInt();")
+    assert tokenizer.get_tokens_as_string() == "<EOF>"
 
 def test_026():
-    source = "void"
-    expected = "void,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """26. Some Keyword tokens in various contexts"""
+    tokenizer = Tokenizer("if (x > 0) return x; else return -x;")
+    assert tokenizer.get_tokens_as_string() == "if,(,x,>,0,),return,x,;,else,return,-,x,;,<EOF>"
 
 def test_027():
-    source = "while"
-    expected = "while,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """27. Some Keyword tokens in various contexts"""
+    tokenizer = Tokenizer("for (auto i = 0; i < 10; ++i) { printInt(i); }")
+    assert tokenizer.get_tokens_as_string() == "for,(,auto,i,=,0,;,i,<,10,;,++,i,),{,printInt,(,i,),;,},<EOF>"
 
 def test_028():
-    source = "+"
-    expected = "+,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """28. Some Keyword tokens in various contexts"""
+    tokenizer = Tokenizer("while (n != 0) { n = n - 1; }")
+    assert tokenizer.get_tokens_as_string() == "while,(,n,!=,0,),{,n,=,n,-,1,;,},<EOF>"
 
 def test_029():
-    source = "-"
-    expected = "-,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """29. Some Keyword tokens in various contexts"""
+    tokenizer = Tokenizer("switch (x) { case 1: break; default: return; }")
+    assert tokenizer.get_tokens_as_string() == "switch,(,x,),{,case,1,:,break,;,default,:,return,;,},<EOF>"
 
 def test_030():
-    source = "*"
-    expected = "*,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """30. Some Keyword tokens in various contexts"""
+    tokenizer = Tokenizer("void main() { printString(\"Hello World\"); }")
+    assert tokenizer.get_tokens_as_string() == "void,main,(,),{,printString,(,Hello World,),;,},<EOF>"
 
 def test_031():
-    source = "/"
-    expected = "/,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """31. Various operators in expressions"""
+    tokenizer = Tokenizer("a + b - c * d / e % f;")
+    assert tokenizer.get_tokens_as_string() == "a,+,b,-,c,*,d,/,e,%,f,;,<EOF>"
 
 def test_032():
-    source = "%"
-    expected = "%,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """32. Various comparison operators"""
+    tokenizer = Tokenizer("if (x == y && a != b || c < d) { return; }")
+    assert tokenizer.get_tokens_as_string() == "if,(,x,==,y,&&,a,!=,b,||,c,<,d,),{,return,;,},<EOF>"
 
 def test_033():
-    source = "="
-    expected = "=,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """33. Assignment and increment/decrement operators"""
+    tokenizer = Tokenizer("x = y; ++x; --y;")
+    assert tokenizer.get_tokens_as_string() == "x,=,y,;,++,x,;,--,y,;,<EOF>"
 
 def test_034():
-    source = "=="
-    expected = "==,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """34. Bitwise operators"""
+    tokenizer = Tokenizer("a & b | c ^ d ~e;")
+    assert tokenizer.get_tokens_as_string() == "a,Error Token &"
 
 def test_035():
-    source = "!="
-    expected = "!=,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """35. Mixed operators in complex expression"""
+    tokenizer = Tokenizer("result = (a + b) * (c - d) / e % f;")
+    assert tokenizer.get_tokens_as_string() == "result,=,(,a,+,b,),*,(,c,-,d,),/,e,%,f,;,<EOF>"
 
 def test_036():
-    source = ">"
-    expected = ">,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """36. Operators with no spaces"""
+    tokenizer = Tokenizer("x+=1;y-=2;z*=3;a/=4;b%=5;")
+    assert tokenizer.get_tokens_as_string() == "x,+,=,1,;,y,-,=,2,;,z,*,=,3,;,a,/,=,4,;,b,%,=,5,;,<EOF>"
 
 def test_037():
-    source = "<"
-    expected = "<,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """37. Chained comparison operators"""
+    tokenizer = Tokenizer("if (a < b <= c > d >= e == f != g) { return; }")
+    assert tokenizer.get_tokens_as_string() == "if,(,a,<,b,<=,c,>,d,>=,e,==,f,!=,g,),{,return,;,},<EOF>"
 
 def test_038():
-    source = ">="
-    expected = ">=,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """38. Logical operators in conditions"""
+    tokenizer = Tokenizer("while (x && y || !z) { x = x + 1; }")
+    assert tokenizer.get_tokens_as_string() == "while,(,x,&&,y,||,!,z,),{,x,=,x,+,1,;,},<EOF>"
 
 def test_039():
-    source = "<="
-    expected = "<=,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """39. Bitwise and logical operators combined"""
+    tokenizer = Tokenizer("result = (a && b) | (c ^ d) && (e || f);")
+    assert tokenizer.get_tokens_as_string() == "result,=,(,a,&&,b,),Error Token |"
 
 def test_040():
-    source = "&&"
-    expected = "&&,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """40. Complex expression with all operator types"""
+    tokenizer = Tokenizer("x = (a + b) * c - d / e % f && g || h == i != j < k <= l > m >= n;")
+    assert tokenizer.get_tokens_as_string() == "x,=,(,a,+,b,),*,c,-,d,/,e,%,f,&&,g,||,h,==,i,!=,j,<,k,<=,l,>,m,>=,n,;,<EOF>"
 
 def test_041():
-    source = "||"
-    expected = "||,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """41. Dot operator in member access"""
+    tokenizer = Tokenizer("object.member;")
+    assert tokenizer.get_tokens_as_string() == "object,.,member,;,<EOF>"
 
 def test_042():
-    source = "!"
-    expected = "!,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """42. Arrow operator in pointer access"""
+    tokenizer = Tokenizer("ptr->member;")
+    assert tokenizer.get_tokens_as_string() == "ptr,-,>,member,;,<EOF>"
 
 def test_043():
-    source = "++"
-    expected = "++,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """43. Various separators in code"""
+    tokenizer = Tokenizer("func(a, b; c: d{ e} )")
+    assert tokenizer.get_tokens_as_string() == "func,(,a,,,b,;,c,:,d,{,e,},),<EOF>"
 
 def test_044():
-    source = "--"
-    expected = "--,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """44. Brackets separators"""
+    tokenizer = Tokenizer("array[func(x, y); z];")
+    assert tokenizer.get_tokens_as_string() == "array,Error Token ["
 
 def test_045():
-    source = "."
-    expected = ".,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """45. Mixed separators in expressions"""
+    tokenizer = Tokenizer("result = func(a, b) + arr[i];")
+    assert tokenizer.get_tokens_as_string() == "result,=,func,(,a,,,b,),+,arr,Error Token ["
 
+#Test cho chuỗi IDENTIFIER dài
 def test_046():
-    source = "( )"
-    expected = "(,),EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """46. Long identifier names"""
+    tokenizer = Tokenizer("this0IsAVeryLongName12345;")
+    assert tokenizer.get_tokens_as_string() == "this0IsAVeryLongName12345,;,<EOF>"
 
 def test_047():
-    source = "{ }"
-    expected = "{,},EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """47. Identifiers with underscores"""
+    tokenizer = Tokenizer("int _my_variable_name = 10;")
+    assert tokenizer.get_tokens_as_string() == "int,_my_variable_name,=,10,;,<EOF>"
+    
 def test_048():
-    source = "a,b"
-    expected = "a,,,b,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """48. String with many Error Token"""
+    tokenizer = Tokenizer("'ab\\'ab',")
+    assert tokenizer.get_tokens_as_string() == "Error Token '"
 
 def test_049():
-    source = "a;b"
-    expected = "a,;,b,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """49. String with many Error Token"""
+    tokenizer = Tokenizer("ab\\'ab',")
+    assert tokenizer.get_tokens_as_string() == "ab,Error Token \\"
+
 
 def test_050():
-    source = "case 1:"
-    expected = "case,1,:,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """50. Integer with leading zeros"""
+    tokenizer = Tokenizer("0 00 000123")
+    assert tokenizer.get_tokens_as_string() == "0,00,000123,<EOF>"
 
 def test_051():
-    source = "func(a,b,c)"
-    expected = "func,(,a,,,b,,,c,),EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """51. Large integer"""
+    tokenizer = Tokenizer("999999999999")
+    assert tokenizer.get_tokens_as_string() == "999999999999,<EOF>"
 
 def test_052():
-    source = "((x))"
-    expected = "(,(,x,),),EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """52. Integer followed by operator"""
+    tokenizer = Tokenizer("42+58")
+    assert tokenizer.get_tokens_as_string() == "42,+,58,<EOF>"
 
 def test_053():
-    source = "a.b"
-    expected = "a,.,b,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """53. Integer in assignment"""
+    tokenizer = Tokenizer("x = 12345;")
+    assert tokenizer.get_tokens_as_string() == "x,=,12345,;,<EOF>"
 
 def test_054():
-    source = "a.b.c"
-    expected = "a,.,b,.,c,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """54. Multiple integers separated by operators"""
+    tokenizer = Tokenizer("1 * 2 / 3 - 4 + 5")
+    assert tokenizer.get_tokens_as_string() == "1,*,2,/,3,-,4,+,5,<EOF>"
 
 def test_055():
-    source = "{a,b}"
-    expected = "{,a,,,b,},EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """55. Integer with comparison operators"""
+    tokenizer = Tokenizer("if (100 >= 50) return 0;")
+    assert tokenizer.get_tokens_as_string() == "if,(,100,>=,50,),return,0,;,<EOF>"
 
 def test_056():
-    source = "_a a1 A_B _123abc"
-    expected = "_a,a1,A_B,_123abc,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """56. Integer in function call"""
+    tokenizer = Tokenizer("printInt(42);")
+    assert tokenizer.get_tokens_as_string() == "printInt,(,42,),;,<EOF>"
 
 def test_057():
-    source = "int1 float_ auto2"
-    expected = "int1,float_,auto2,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """57. Simple float with decimal point"""
+    tokenizer = Tokenizer("3.14")
+    assert tokenizer.get_tokens_as_string() == "3.14,<EOF>"
 
 def test_058():
-    source = "abc123 123abc"
-    expected = "abc123,123,abc,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """58. Float starting with zero"""
+    tokenizer = Tokenizer("0.5")
+    assert tokenizer.get_tokens_as_string() == "0.5,<EOF>"
 
 def test_059():
-    source = "x_y_z"
-    expected = "x_y_z,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """59. Float with scientific notation"""
+    tokenizer = Tokenizer("1.5e-10")
+    assert tokenizer.get_tokens_as_string() == "1.5e-10,<EOF>"
 
 def test_060():
-    source = "_0 _9"
-    expected = "_0,_9,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """60. Float with uppercase E notation"""
+    tokenizer = Tokenizer("2.5E+5")
+    assert tokenizer.get_tokens_as_string() == "2.5E+5,<EOF>"
 
 def test_061():
-    source = "0 1 9 10 999"
-    expected = "0,1,9,10,999,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """61. Float without leading digit"""
+    tokenizer = Tokenizer(".75")
+    assert tokenizer.get_tokens_as_string() == ".75,<EOF>"
 
 def test_062():
-    source = "-1 -10 -999"
-    expected = "-1,-10,-999,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """62. Float without trailing digits"""
+    tokenizer = Tokenizer("5.")
+    assert tokenizer.get_tokens_as_string() == "5.,<EOF>"
 
 def test_063():
-    source = "2147483647 -2147483648"
-    expected = "2147483647,-2147483648,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """63. Multiple floats in expression"""
+    tokenizer = Tokenizer("x = 1.5 + 2.7 * 3.14;")
+    assert tokenizer.get_tokens_as_string() == "x,=,1.5,+,2.7,*,3.14,;,<EOF>"
 
 def test_064():
-    source = "5+6"
-    expected = "5,+,6,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """64. String with spaces"""
+    tokenizer = Tokenizer('"hello world"')
+    assert tokenizer.get_tokens_as_string() == "hello world,<EOF>"
 
 def test_065():
-    source = "10-3"
-    expected = "10,-,3,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """65. Empty string"""
+    tokenizer = Tokenizer('""')
+    assert tokenizer.get_tokens_as_string() == ",<EOF>"
 
 def test_066():
-    source = "0.0 3.14 -2.5"
-    expected = "0.0,3.14,-2.5,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """66. String with numbers"""
+    tokenizer = Tokenizer('"abc123"')
+    assert tokenizer.get_tokens_as_string() == "abc123,<EOF>"
 
 def test_067():
-    source = "1. .5 0. 0.5"
-    expected = "1.,.5,0.,0.5,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """67. String with punctuation"""
+    tokenizer = Tokenizer('"Hello, World!"')
+    assert tokenizer.get_tokens_as_string() == "Hello, World!,<EOF>"
 
 def test_068():
-    source = "1e10 2E+3 -4e-2 5E0"
-    expected = "1e10,2E+3,-4e-2,5E0,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """68. String with tab escape sequence"""
+    tokenizer = Tokenizer(r'"Column1\tColumn2"')
+    assert tokenizer.get_tokens_as_string() == r'Column1\tColumn2,<EOF>'
 
 def test_069():
-    source = "10.5e2 .75E-1"
-    expected = "10.5e2,.75E-1,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """69. String with newline escape sequence"""
+    tokenizer = Tokenizer(r'"Line1\nLine2"')
+    assert tokenizer.get_tokens_as_string() == r'Line1\nLine2,<EOF>'
 
 def test_070():
-    source = "1.23e4 5.67E-2"
-    expected = "1.23e4,5.67E-2,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """70. String with quote escape sequence"""
+    tokenizer = Tokenizer(r'"He said \"Hello\""')
+    assert tokenizer.get_tokens_as_string() == r'He said \"Hello\",<EOF>'
+
+# Sinh ra 7 testcase cho các chuỗi lỗi của STRING_LITERAL, INTEGER_LITERAL, FLOAT_LITERAL
 
 def test_071():
-    source = "\"\" \"a\""
-    expected = ",a,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """71. Float with multiple decimal points"""
+    tokenizer = Tokenizer("3.14.15")
+    assert tokenizer.get_tokens_as_string() == "3.14,.15,<EOF>"
 
 def test_072():
-    source = "\"Hello World\""
-    expected = "Hello World,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """72. Float with invalid exponent format"""
+    tokenizer = Tokenizer("1.5e")
+    assert tokenizer.get_tokens_as_string() == "1.5,e,<EOF>"
 
 def test_073():
-    source = "\"Tab\\tSpace\""
-    expected = "Tab\\tSpace,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """73. Float with multiple e notation"""
+    tokenizer = Tokenizer("1e5e3")
+    assert tokenizer.get_tokens_as_string() == "1e5,e3,<EOF>"
 
 def test_074():
-    source = "\"Quote: \\\"\""
-    expected = "Quote: \\\",EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """74. String with invalid escape sequence in middle"""
+    tokenizer = Tokenizer('"abc_def"')
+    assert tokenizer.get_tokens_as_string() == "abc_def,<EOF>"
 
 def test_075():
-    source = "\"Backslash\\\\\""
-    expected = "Backslash\\\\,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """75. Integer with invalid character in middle"""
+    tokenizer = Tokenizer("123a45")
+    assert tokenizer.get_tokens_as_string() == "123,a45,<EOF>"
 
 def test_076():
-    source = "\"Line1\\nLine2\""
-    expected = "Line1\\nLine2,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """76. Float starting with e notation only"""
+    tokenizer = Tokenizer("e-5")
+    assert tokenizer.get_tokens_as_string() == "e,-,5,<EOF>"
 
 def test_077():
-    source = "\"Mix \\t \\n \\r\""
-    expected = "Mix \\t \\n \\r,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """77. String with double backslash at end"""
+    tokenizer = Tokenizer(r'"invalid\\"')
+    assert tokenizer.get_tokens_as_string() == r'invalid\\,<EOF>'
 
+# Testcases cho các ký tự đặc biệt đứng đầu
 def test_078():
-    source = "\"Symbols !@#$%^&*()\""
-    expected = "Symbols !@#$%^&*(),EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """78. Dot operator alone"""
+    tokenizer = Tokenizer(".")
+    assert tokenizer.get_tokens_as_string() == ".,<EOF>"
 
 def test_079():
-    source = "\"abc\\a\""
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Illegal Escape In String: abc\\a"
+    """79. Arrow operator alone"""
+    tokenizer = Tokenizer("->")
+    assert tokenizer.get_tokens_as_string() == "-,>,<EOF>"
 
 def test_080():
-    source = "\"\\9\""
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Illegal Escape In String: \\9"
-
+    """80. Comma separator alone"""
+    tokenizer = Tokenizer(",")
+    assert tokenizer.get_tokens_as_string() == ",,<EOF>"
 def test_081():
-    source = '"abc'
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Unclosed String: abc"
-
+    """81. Colon separator alone"""
+    tokenizer = Tokenizer(":")
+    assert tokenizer.get_tokens_as_string() == ":,<EOF>"
 def test_082():
-    source = """
-    "abc
-"""
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Unclosed String: abc"
-
+    """82. Left brace separator alone"""
+    tokenizer = Tokenizer("{")
+    assert tokenizer.get_tokens_as_string() == "{,<EOF>"
 def test_083():
-    source = "$"
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Error Token $"
-
+    """83. Right brace separator alone"""
+    tokenizer = Tokenizer("}")
+    assert tokenizer.get_tokens_as_string() == "},<EOF>"
 def test_084():
-    source = "`"
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Error Token `"
-
+    """84. Increment operator alone"""
+    tokenizer = Tokenizer("++")
+    assert tokenizer.get_tokens_as_string() == "++,<EOF>"
 def test_085():
-    source = "~"
-    try:
-        Tokenizer(source).get_tokens_as_string()
-        assert False, "Expected ErrorToken but no exception was raised"
-    except Exception as e:
-        assert str(e) == "Error Token ~"
-
+    """85. Decrement operator alone"""
+    tokenizer = Tokenizer("--")
+    assert tokenizer.get_tokens_as_string() == "--,<EOF>"
 def test_086():
-    source = "auto/*comment*/x"
-    expected = "auto,x,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """86. Mixed special characters"""
+    tokenizer = Tokenizer(".->, : { } ++ --")
+    assert tokenizer.get_tokens_as_string() == ".,-,>,,,:,{,},++,--,<EOF>"
 def test_087():
-    source = "auto//comment\nx"
-    expected = "auto,x,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """87. Dot operator in expression"""
+    tokenizer = Tokenizer("obj.member + 5;")
+    assert tokenizer.get_tokens_as_string() == "obj,.,member,+,5,;,<EOF>"
 def test_088():
-    source = "/* comment */"
-    expected = "EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """88. Arrow operator in expression"""
+    tokenizer = Tokenizer("ptr->value - 10;")
+    assert tokenizer.get_tokens_as_string() == "ptr,-,>,value,-,10,;,<EOF>"
 def test_089():
-    source = "/* line1\nline2 */ auto"
-    expected = "auto,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """89. Separators in function definition"""
+    tokenizer = Tokenizer("void func(int a, float b) { return; }")
+    assert tokenizer.get_tokens_as_string() == "void,func,(,int,a,,,float,b,),{,return,;,},<EOF>"
 def test_090():
-    source = "// only comment"
-    expected = "EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """90. Increment and decrement in loop"""
+    tokenizer = Tokenizer("for (auto i = 0; i < n; ++i) { --j; }")
+    assert tokenizer.get_tokens_as_string() == "for,(,auto,i,=,0,;,i,<,n,;,++,i,),{,--,j,;,},<EOF>"
 def test_091():
-    source = "// comment with /* */\nauto"
-    expected = "auto,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """91. Complex use of special characters"""
+    tokenizer = Tokenizer("result = obj.member->value + arr[i++];")
+    assert tokenizer.get_tokens_as_string() == "result,=,obj,.,member,-,>,value,+,arr,Error Token ["
 def test_092():
-    source = "/* comment with // */ auto"
-    expected = "auto,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """92. Special characters in comments"""
+    tokenizer = Tokenizer("// This is a comment with special chars .->, : { } ++ --")
+    assert tokenizer.get_tokens_as_string() == "<EOF>"
 def test_093():
-    source = "int x = 10; float y = 3.14;"
-    expected = "int,x,=,10,;,float,y,=,3.14,;,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """93. Special characters in strings"""
+    tokenizer = Tokenizer("'{'}")
+    assert tokenizer.get_tokens_as_string() == "Error Token '"
 def test_094():
-    source = "if(x<10) x=x+1;"
-    expected = "if,(,x,<,10,),x,=,x,+,1,;,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
-
+    """94. Mixed special characters and identifiers"""
+    tokenizer = Tokenizer("myObj.member->func(param1, param2);")
+    assert tokenizer.get_tokens_as_string() == "myObj,.,member,-,>,func,(,param1,,,param2,),;,<EOF>"
 def test_095():
-    source = "while(x>0){x--; }"
-    expected = "while,(,x,>,0,),{,x,--,;,},EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """95. Special characters with no spaces"""
+    tokenizer = Tokenizer("obj.member->value++;")
+    assert tokenizer.get_tokens_as_string() == "obj,.,member,-,>,value,++,;,<EOF>"
 
 def test_096():
-    source = "for(i=0;i<3;i++){}"
-    expected = "for,(,i,=,0,;,i,<,3,;,i,++,),{,},EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """96. Function with multiple parameters and operations"""
+    tokenizer = Tokenizer("int calculate(int x, float y) { return x + y * 2; }")
+    assert tokenizer.get_tokens_as_string() == "int,calculate,(,int,x,,,float,y,),{,return,x,+,y,*,2,;,},<EOF>"
 
 def test_097():
-    source = "switch(n){case 0: n=1; break; case 1: n=2; break; default: n=0;}"
-    expected = "switch,(,n,),{,case,0,:,n,=,1,;,break,;,case,1,:,n,=,2,;,break,;,default,:,n,=,0,;,},EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """97. Nested if-else with logical operators"""
+    tokenizer = Tokenizer("if (x > 0 && y < 10) { if (z == 5) return 1; else return 0; }")
+    assert tokenizer.get_tokens_as_string() == "if,(,x,>,0,&&,y,<,10,),{,if,(,z,==,5,),return,1,;,else,return,0,;,},<EOF>"
 
 def test_098():
-    source = "struct S { int a; float b; string c; };"
-    expected = "struct,S,{,int,a,;,float,b,;,string,c,;,},;,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """98. For loop with multiple variables and string output"""
+    tokenizer = Tokenizer('for (auto i = 0; i < 100; ++i) { printString("Count: "); printInt(i); }')
+    assert tokenizer.get_tokens_as_string() == "for,(,auto,i,=,0,;,i,<,100,;,++,i,),{,printString,(,Count: ,),;,printInt,(,i,),;,},<EOF>"
 
 def test_099():
-    source = "S s = {1,2.0,\"hi\"};"
-    expected = "S,s,=,{,1,,,2.0,,,hi,},;,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """99. While loop with arithmetic and member access"""
+    tokenizer = Tokenizer("while (node.value != 0) { result = result + node.value; node = node.next; }")
+    assert tokenizer.get_tokens_as_string() == "while,(,node,.,value,!=,0,),{,result,=,result,+,node,.,value,;,node,=,node,.,next,;,},<EOF>"
 
 def test_100():
-    source = "auto msg = \"Hi\"; printString(msg);"
-    expected = "auto,msg,=,Hi,;,printString,(,msg,),;,EOF"
-    assert Tokenizer(source).get_tokens_as_string() == expected
+    """100. Complex program with mixed statements and operations"""
+    tokenizer = Tokenizer('auto sum = 0; for (auto i = 1; i <= 10; ++i) { sum = sum + i; } if (sum >= 50) printString("Large"); else printInt(sum);')
+    assert tokenizer.get_tokens_as_string() == "auto,sum,=,0,;,for,(,auto,i,=,1,;,i,<=,10,;,++,i,),{,sum,=,sum,+,i,;,},if,(,sum,>=,50,),printString,(,Large,),;,else,printInt,(,sum,),;,<EOF>"
